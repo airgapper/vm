@@ -6,6 +6,7 @@ THIRD TEST
 FOURTH TEST
 FITH CHANGE
 Sixth Change
+Seventh Change
 
 VirtKick is a simple, open source orchestrator.
 Managing virtual machines or Docker containers has never been easier.
