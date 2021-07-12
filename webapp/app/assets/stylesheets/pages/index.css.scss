@@ -1,0 +1,91 @@
+#page-index {
+  $item-total-width: 200px;
+
+  .items {
+    @extend .dashboard;
+    font-size: 1em;
+    list-style: none;
+    text-align: center;
+
+    padding: 30px 0px 5px;
+    margin: 0;
+
+    ul {
+      padding: 0;
+    }
+
+    li {
+      $item-width: 130px;
+      width: $item-width;
+      display: inline-block;
+
+      margin: 0 5px;
+      @media(min-width: $screen-sm) {
+        margin: 0 20px;
+      }
+      @media(min-width: $screen-lg) {
+        margin: 0 ($item-total-width - $item-width) / 2;
+      }
+
+      padding: 10px 0;
+
+      span {
+        font-size: 150%;
+      }
+
+      i {
+        color: $brand-primary;
+        margin-right: 10px;
+      }
+
+      .value-field {
+        background-color: $vk-dashboard-field-bg-color;
+        font-size: 24px;
+        padding: 5px 0;
+        display: block;
+        height: 50px;
+        line-height: 40px;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  table {
+    margin-top: 2em;
+    margin-bottom: 2em;
+
+    .name {
+      i {
+        margin-right: 9px;
+      }
+
+      &.state-running a {
+        color: $vk-action-run-color;
+      }
+      &.state-suspended a {
+        color: $vk-action-pause-color;
+      }
+      &.state-restarting a {
+        color: $vk-action-restart-color;
+      }
+      &.state-stopped a {
+        color: $vk-action-stop-color;
+      }
+
+      width: 70%;
+
+      .error {
+        margin-left: 15px;
+        font-size: 13px;
+      }
+    }
+    .memory, .storage {
+      text-align: right;
+    }
+  }
+
+  p {
+    text-align: center;
+    margin-top: 20px;
+  }
+}

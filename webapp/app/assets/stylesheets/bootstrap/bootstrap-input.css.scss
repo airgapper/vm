@@ -1,0 +1,88 @@
+input, .form-control input, select, .form-control select, .input-group input, textarea, .form-control textarea {
+  @include box-shadow(none !important);
+  border-color: $vk-input-border-color !important;
+  border-style: solid !important;
+  border-width: 1px !important;
+
+  &:focus, &:active {
+    border-color: darken($vk-input-border-color, 10%) !important;
+  }
+
+  &:focus, &:active {
+    @include box-shadow(0 0 8px rgba(236,72,99,0.6) !important);
+    @include box-shadow(none !important);
+  }  
+}
+
+input.form-control, input[type="text"], input[type="password"], input[type="email"] {
+  color: $vk-input-color;
+  background-color: transparent !important;
+
+  &:focus, &:active {
+    border-color: $vk-input-border-hover-color !important;
+  }  
+}
+
+input.wide {
+  height: 50px;
+  font-size: $text-normal;
+  line-height: 50px;
+}
+
+.input-group {
+  .input-group-addon {
+    border-color: $vk-input-border-color !important;
+    background-color: transparent;
+    color: $vk-input-addon-color;
+  }
+
+  input {
+    padding: 6px 12px !important;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+
+    &:focus {
+      outline-color: transparent;
+    }
+  }
+}
+
+.form-group.has-error {
+  color: $vk-input-error-color !important;
+
+  input.form-control, .input-group-addon {
+    border-color: $vk-input-error-border-color !important;
+  }
+}
+
+.form-group.has-success {
+  color: $vk-input-success-color !important;
+
+  input.form-control, .input-group-addon {
+    border-color: $vk-input-success-border-color !important;
+  }
+}
+
+.form-group .help-block {
+  display: none;
+}
+
+.form-group.has-error .help-block {
+  color: $vk-input-error-color;
+  display: block;
+}
+
+::-webkit-input-placeholder { 
+  color: $vk-input-placeholder-color !important;
+}
+:-moz-placeholder { 
+  color: $vk-input-placeholder-color !important;
+  opacity:  1;
+}
+::-moz-placeholder { 
+  color: $vk-input-placeholder-color !important;
+  opacity:  1;
+}
+:-ms-input-placeholder { 
+  color: $vk-input-placeholder-color !important;
+}

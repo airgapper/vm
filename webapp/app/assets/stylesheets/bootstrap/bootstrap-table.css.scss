@@ -1,0 +1,183 @@
+.table-header {
+  .fa {
+    color: $vk-table-header-icon-color;
+    margin-right: 15px;
+  }
+}
+
+h4.table-header {
+  font-size: $text-normal;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+table.table {
+  margin: 0 auto;
+  border: 1px solid $vk-table-border-color;
+  border-radius: $vk-table-border-radius;
+  border-collapse: initial;
+
+  .btn {
+    font-size: 1em !important;
+  }
+
+  thead tr th {
+    border: 0px;
+
+    &:first-child {
+      padding-left: 20px;
+    }
+    &:last-child {
+      padding-right: 20px;
+    }
+  }
+
+  tbody {
+    tr {
+      background-color: transparent !important;
+      td {
+        color: $vk-table-color;
+        border: 0px;
+        background-color: transparent !important;
+        border-radius: 0px !important;
+        padding-top: 12px;
+        padding-bottom: 12px;
+
+        &:first-child {
+          padding-left: 20px;
+        }
+        &:last-child {
+          padding-right: 20px;
+        }
+      }    
+      td, th {
+        border-radius: $vk-table-border-radius;
+        vertical-align: middle;
+
+        &.actions {      
+          text-align: right;
+          vertical-align: middle;
+          font-size: 0.9em;
+
+          .buttons {
+            opacity: 0;
+
+            a {
+              margin: 0px;
+              padding: 6px;
+              display: inline-block;
+              
+              &:not(.btn) {
+                cursor: pointer;
+                color: $vk-table-link-color;
+                @include transition(color, 0.1s, ease-in, 0s);
+                
+                &:hover, &:focus, &:active {
+                  text-decoration: none;
+                  color: $vk-table-link-hover-color;
+                  @include transition(opacity, 0.1s, ease-in, 0s);
+                }
+              }
+              
+
+              span.action {
+                margin-left: 5px;
+              }
+            }
+            @media(max-width: $screen-sm-max) {
+              span.oi, span.fa {
+                margin-right: 15px;
+                font-size: 18px !important;
+              }
+              span.action {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+    }
+    tr:hover {
+      td.actions .buttons {
+        opacity: 1;
+        @include transition(opacity, 0.2s, ease-in, 0s);
+      }
+    }
+  }
+
+  &.table-striped {
+    tbody {
+      tr:nth-child(odd) {
+        td, th {
+          background-color: $vk-table-stripe-bg-color !important;
+        }
+      }
+
+      tr:last-child td:first-child {
+        border-bottom-left-radius: $vk-table-border-radius !important;
+      }
+
+      tr:last-child td:last-child {
+        border-bottom-right-radius: $vk-table-border-radius !important;
+      } 
+    }
+  }
+
+  &.table-condensed {
+    tbody {
+      tr {
+        td, th {
+          padding-top: 6px;
+          padding-bottom: 6px;
+        }
+      } 
+    }
+  }
+}
+
+.total-row {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  font-weight: bold;
+  color: $vk-table-total-color;
+
+  .total {
+    padding-left: 21px;
+    float: left;
+  }
+
+  .sum {
+    padding-right: 21px;
+    float: right;
+  }
+
+  .clear {
+    clear: both;
+  }
+}
+
+.show-more {
+  width: 100%;
+  text-align: center;
+  padding-top: 10px;
+
+  a {
+    margin: 0 auto;
+    text-decoration: none;
+    color: $vk-table-more-color;
+    font-size: $text-small;
+    cursor: pointer;
+
+    .fa {
+      padding-right: 10px;
+      color: $vk-table-more-icon-color;
+    }
+
+    @include transition(color 0.2s ease);
+    &:hover, &:active {
+      color: $vk-table-more-hover-color;
+      @include transition(color 0.2s ease);
+    }
+  }
+}

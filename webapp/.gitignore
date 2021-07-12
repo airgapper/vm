@@ -1,0 +1,16 @@
+/.bundle
+/db/*.sqlite3
+/db/*.sqlite3-journal
+/log/*.log
+/tmp
+/coverage
+/Gemfile.local
+/public/assets
+/public/javascripts
+/node_modules
+/app/themes/*
+!/app/themes/virtkick
+vendor/cache
+bower_components
+db/schema.rb
+engines/*

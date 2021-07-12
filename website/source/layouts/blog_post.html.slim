@@ -1,0 +1,27 @@
+= wrap_layout :blog do
+  .container
+    .row
+      .blog.col-md-8.col-md-offset-2  
+        .post-header
+          h1.title
+            = link_to current_article.title, current_article
+          p.article-author
+            > Written by 
+            span.author-name
+              > #{current_article.data.author} 
+            > on #{current_article.date.strftime '%B %Y'}
+        = yield
+
+        p.back
+          a href="/blog/" class="btn"
+            > Back to the list »
+        .author
+          = gravatar_for current_article.data.email
+          .info
+            .name 
+              #{current_article.data.author}
+              a href="mailto: #{current_article.data.email}"
+                span.fa.fa-envelope
+            span.title = current_article.data.role
+
+        = disqus

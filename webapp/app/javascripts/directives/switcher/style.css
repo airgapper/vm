@@ -1,0 +1,52 @@
+.switch-wrapper {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.switch-wrapper .switch {
+  position: relative;
+  display: inline-block;
+}
+
+.switch-wrapper .switch .handle {
+  position: absolute;
+  top: 0;
+  transition: left 0.4s ease 0s;
+}
+
+.switch-wrapper .switch .handle.left {
+  left: 0;
+}
+
+.switch-wrapper .switch .handle.left .option.second {
+  opacity: 0;
+}
+
+.switch-wrapper .switch .handle.right .option.first {
+  opacity: 0;
+}
+
+.switch-wrapper .switch .handle .option {
+  position: absolute;
+  text-align: center;
+  vertical-align: middle;
+  transition: opacity 0.2s linear 0s;
+}
+
+.switch-wrapper .switch:hover {
+  cursor: pointer;
+}
+
+.switch-wrapper span {
+  display: inline-block;
+  vertical-align: top;
+  transition: color 0.25s ease 0s;
+  margin-top: -1px;
+  margin-right: 1em;
+  margin-left: 1em;
+}
+
+.switch-wrapper span:hover {
+  cursor: pointer;
+}

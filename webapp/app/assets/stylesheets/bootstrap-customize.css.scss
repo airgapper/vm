@@ -1,0 +1,60 @@
+.progress {
+  .progress-bar {
+  	@include box-shadow(none);
+  }
+  @include box-shadow(none !important);
+  border-radius: $vk-progress-border-radius !important;
+}
+
+label {
+  font-weight: normal !important;
+}
+
+.navbar-default {
+	.navbar-toggle, .navbar-toggle:hover, .navbar-toggle:focus {
+		border: 0 !important;
+		background-color: transparent !important;
+  	@include transition(background-color, 0.25s, ease-in, 0s);
+	  .icon-bar {
+      background-color: $vk-navbar-icon-color !important;
+    }
+    &:hover {
+      background-color: $vk-navbar-icon-hover-bg-color !important;
+      @include transition(background-color, 0.25s, ease-in, 0s);
+      .icon-bar {
+        background-color: white !important;
+      }
+    }
+  }
+}
+
+.dropdown-menu {
+  padding: 0px !important;
+  border: 0 !important;
+  @include box-shadow(none !important);
+  border-radius: $vk-dropdown-border-radius !important;
+
+  & > li {
+
+    & > a {
+      color: $brand-secondary !important;
+      background-color: $vk-dropdown-bg-color;
+      padding: 10px 25px !important;
+      cursor: pointer;
+
+      @include transition(background-color, 0.3s, ease, 0.0s);
+      &:hover, &:active {
+        background-color: darken($vk-dropdown-bg-color, 10%) !important;
+        @include transition(background-color, 0.3s, ease, 0.0s);
+      }
+    }
+  }
+}
+
+.container.main {
+  padding-bottom: 10px;
+}
+
+$icon-font-path: '/font/';
+
+@import 'bootstrap/_variables';

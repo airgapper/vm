@@ -1,0 +1,9 @@
+language: ruby
+cache: bundler
+rvm:
+- 2.1.2
+script:
+- bundle exec middleman build --verbose
+notifications:
+  email: false
+  webhooks: http://n.tkte.ch/h/3276/PT18U1ENYUxS0vSFEmwNtgWv

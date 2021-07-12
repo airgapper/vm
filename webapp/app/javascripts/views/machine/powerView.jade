@@ -1,0 +1,96 @@
+#power
+  .row.stats.dashboard-inverse
+    .col-sm-3
+      .key Memory:
+      .value-field.bigger
+        | {{machine.memory}} MB
+    .col-sm-3
+      .key Processors:
+      .value-field(ng-class="{bigger: machine.status === 'stopped'}")
+        | {{machine.processors}}
+        |  CPU
+      .progress(ng-if="machine.status !== 'stopped'")
+        .progress-bar(role='progressbar', style="width: {{(100*machine.cpuUsage).toFixed(2)}}%; min-width: 1%")
+          span.sr-only
+            | {{machine.cpuUsage}}
+            | % usage
+    .col-sm-3
+      .key Storage:
+      //- TODO: sum all disks
+      .value-field {{machine.disks[0].size | bytes}}
+      .progress
+        .progress-bar(role='progressbar', style="width: {{machine.disks.usage}}%; min-width: 1%")
+          span.sr-only
+            | {{machine.disks.used}}
+            |  used (
+            | {{machine.disks.usage}}
+            | %)
+    .col-sm-3
+      .key State:
+      .value-field.power-state.bigger(data-running="{{machine.status === 'running'}}")
+        span
+          i.power-state-icon(class="icon fa" ng-class='{"fa-play": machine.status == "running", "fa-stop": machine.status == "stopped", "fa-pause": machine.status == "suspended"}')
+          span.status(ng-switch='machine.status')
+            span(ng-switch-when='running') Running
+            span(ng-switch-when='suspended') Paused
+            span(ng-switch-when='stopped') Stopped
+            span(ng-switch-when='saved') Saved
+            span(ng-switch-default) Unknown
+
+  .controls
+    .btn-group
+      a.btn.btn-default(ng-click="machine.start()" ng-class="{disabled: !canDo.start}")
+        // TODO: move it to stylesheet (and other below as well)
+        div(style='width: 22px; display:inline-block;')
+          span(ng-if="!requesting.start")
+            i.icon.fa.fa-play
+          span(ng-if="requesting.start")
+            ajaxloader(size=16)
+        span.status Start
+      a.btn.btn-default(ng-click="machine.pause()" ng-class="{disabled: !canDo.pause}")
+        div(style='width: 22px; display:inline-block;')
+          span(ng-if="!requesting.pause")
+            i.icon.fa.fa-pause
+          span(ng-if="requesting.pause")
+            ajaxloader(size=16)
+        span.status Pause
+      a.btn.btn-default(ng-click="machine.resume()" ng-class="{disabled: !canDo.resume}")
+        div(style='width: 22px; display:inline-block;')
+          span(ng-if="!requesting.resume")
+            i.icon.fa.fa-forward
+          span(ng-if="requesting.resume")
+            ajaxloader(size=16)
+        span.status Resume
+      a.btn.btn-default(ng-click="machine.stop()" ng-class="{disabled: !canDo.stop}")
+        div(style='width: 22px; display:inline-block;')
+          span(ng-if="!requesting.stop && !requesting.forceStop")
+            i.icon.fa.fa-stop
+          span(ng-if="requesting.stop || requesting.forceStop")
+            ajaxloader(size=16)
+        span.status Stop
+      .btn-group(dropdown)
+        button.only-on.btn.btn-default.dropdown-toggle(type='button' data-toggle='dropdown' ng-class="{disabled: !canDo.forceStop}" ng-disabled='!canDo.stop')
+          i.fa.fa-caret-down
+        ul.dropdown-menu
+          li(role="presentation")
+            a(role="menuitem" action="doAction('forceStop')" title='Hard stop' confirm='Are you sure? This may cause data loss.')
+              span.icon.fa.fa-power-off
+              span.status Hard stop
+      a.btn.btn-default(ng-class="{disabled: !canDo.restart}" title='Restart' confirm='Are you sure? This may cause data loss.' action="machine.forceRestart()")
+        div(style='width: 22px; display:inline-block;')
+          span(ng-if="!requesting.forceRestart")
+            i.icon.fa.fa-power-off
+          span(ng-if="requesting.forceRestart")
+            ajaxloader(size=16)
+        span.status Restart
+  div.alert.alert-danger(ng-show='machine.error')
+    button.close(data-dismiss="alert" ng-click='machine.error = null') ×
+    | {{machine.error}}
+  div.alert.alert-warning(ng-show='machine.didNotStop')
+    | Machine did not react to stop request. It may be either taking longer to stop or does not react.
+    br
+    | Go to&nbsp;
+    a(ui-sref='^.console') console&nbsp;
+    | to see what's going on or&nbsp;
+    a(title='Force restart' confirm='Are you sure? This may cause data loss.' action="machine.forceRestart()") force restart&nbsp;
+    | the machine.

@@ -1,0 +1,30 @@
+---
+title: Virtkick - Blog
+description: Cloud News & VPS provider stories
+pageable: true
+per_page: 5
+layout: blog
+---
+
+- page_articles.each_with_index do |article, i|
+  div class="#{i % 2 == 1 ? 'odd' : 'even'}"
+    .container
+      .row
+        .blog.short.col-md-8.col-md-offset-2  
+          .post-header
+            h1.title
+              = link_to article.title, article
+            p.article-author
+              > Written by 
+              span.author-name
+                > #{article.data.author} 
+              > on #{article.date.strftime '%B %Y'}
+          = article.summary 300
+          p.read-more
+            = link_to "Read more", article, class: 'btn'
+- if page_articles.size == current_page.data.per_page
+.container
+  .row
+    .blog.col-md-8.col-md-offset-2  
+      p.links.all
+        a href='/blog/archives.html' See all previous posts.

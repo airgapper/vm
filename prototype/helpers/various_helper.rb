@@ -1,0 +1,2 @@
+module VariousHelper
+end

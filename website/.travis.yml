@@ -1,0 +1,12 @@
+language: ruby
+cache: bundler
+rvm:
+- 2.1.5
+before_script:
+- sudo apt-get install -y advancecomp jpegoptim libjpeg-progs optipng pngcrush
+script:
+- bundle exec middleman build
+notifications:
+  email: false
+  webhooks: http://n.tkte.ch/h/3275/BLR4JlXy_0HXFOljf3WLgWaD
+

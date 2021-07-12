@@ -1,0 +1,9 @@
+- function capitalizeFirstLetter(string) { return string.charAt(0).toUpperCase() + string.slice(1); }
+
+#page-machine.ng-cloak
+  - var tabs = ['power', 'console', 'storage', 'settings']
+  tabset(justified=1 type='pills')
+    for tab in tabs
+      li(ui-sref-active='active'): a(ui-sref='user.machines.show.#{tab}') #{capitalizeFirstLetter(tab)}
+  div.tab-content(ui-view='')
+  div.tab-content(ui-view='console' ng-show='$state.current.name == "user.machines.show.console"')

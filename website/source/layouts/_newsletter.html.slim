@@ -1,0 +1,13 @@
+.newsletter
+  form.form-inline action='https://virtkick.us8.list-manage.com/subscribe/post?u=b74a227fdbddc9f590a62114e&amp;id=08823d8a7b' method='post' role='form'
+    - if defined? header
+      h4
+        - if defined? bullhorn
+          span.fa.fa-bullhorn &nbsp;
+          | #{header}
+    p.result data-success='Thank you! Please check your e-mail to confirm.'
+      - if defined? info
+        | #{info}
+    .form-group
+      input.newsletter-email.form-control.input name='EMAIL' placeholder=('Your e-mail address') type='text'
+      input.btn.btn-primary name='subscribe' type='submit' value='Subscribe'

@@ -1,0 +1,64 @@
+- @header = 'Support'
+- @icon = 'flag'
+
+- content_for :action do
+  a.btn.btn-primary.btn-block href='/support-ticket.html'
+    | Request support
+
+#page-support
+  p.text-center Don't hesitate to request support in case you have any question or problem.
+
+  h3 Current requests
+
+  table.table
+    tr
+      td.id
+        | #5 &nbsp;
+        i.fa.fa-envelope
+      td
+        a href='/support-ticket.html' can't start a newly created VM
+      td.date 2014-06-11
+    tr
+      td #4
+      td
+        a href='/support-ticket.html' support for Zerigo DNS as VirtKick add-on
+      td.date 2014-05-18
+    tr.resolved
+      td #3
+      td
+        a href='/support-ticket.html' API down?
+        span
+          | resolved&nbsp;
+          i.fa.fa-check
+      td.date 2014-04-03
+    tr.resolved
+      td #2
+      td
+        a href='/support-ticket.html'  update company data on previous invoices
+        span
+          | resolved&nbsp;
+          i.fa.fa-check
+      td.date 2014-03-28
+    tr.resolved
+      td #1
+      td
+        a href='/support-ticket.html' can't create extra HDD disk (SSD is OK)
+        span
+          | resolved&nbsp;
+          i.fa.fa-check
+      td.date 2014-02-03
+    tr.show-all
+      td.text-center colspan='3'
+        a href='#' show old support requests
+        | &nbsp;
+        span.fa.fa-caret-down
+
+- content_for :scripts do
+  javascript:
+    $(function() {
+      $('#page-support tr.resolved').hide();
+      $('#page-support .show-all a').click(function() {
+        $('#page-support tr.resolved').show();
+        $('.show-all').hide();
+      });
+    });

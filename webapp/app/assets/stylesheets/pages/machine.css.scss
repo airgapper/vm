@@ -1,0 +1,63 @@
+@import 'machine/*';
+
+#page-machine {
+  .nav-pills {
+    border-radius: $vk-navpills-border-radius;
+    background-color: $vk-static-bg-color;
+    li {
+      background-color: $vk-static-bg-color;
+
+      a {
+        border-radius: $vk-navpills-active-border-radius;
+        color: $navbar-default-color;
+      }
+
+      a:hover {
+        color: $navbar-default-link-active-color;
+      }
+
+      &.active {
+        a {
+          color: white;
+          border-radius: $vk-navpills-active-border-radius;
+        }
+      }
+    }
+
+    @media(min-width: $screen-md-min) {
+      
+      li {
+        border-radius: $vk-navpills-active-border-radius;
+
+        &.active {
+          border-radius: $vk-navpills-active-border-radius;
+        }
+
+        &:first-child {
+          border-top-left-radius: $vk-navpills-border-radius !important;
+          border-bottom-left-radius: $vk-navpills-border-radius !important;
+          a {
+            border-top-left-radius: $vk-navpills-border-radius !important;
+            border-bottom-left-radius: $vk-navpills-border-radius !important;
+          }
+        }
+
+        &:last-child {
+          border-top-right-radius: $vk-navpills-border-radius !important;
+          border-bottom-right-radius: $vk-navpills-border-radius !important;
+          a {
+            border-top-right-radius: $vk-navpills-border-radius !important;
+            border-bottom-right-radius: $vk-navpills-border-radius !important;
+          }
+        }
+      }
+    }
+  }
+
+  .tab-content {
+    margin-top: 1em;
+    text-align: left;
+  }
+
+}
+

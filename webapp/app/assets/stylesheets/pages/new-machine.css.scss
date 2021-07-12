@@ -1,0 +1,51 @@
+#page-new-machine {
+  h4 {
+    font-size: 1em;
+    font-weight: bold;
+  }
+
+  .radio-elem {
+    vertical-align: top;
+  }
+
+  .plans, .image {
+    margin-top: 1.6em;
+    margin-bottom: 2.6em;
+  }
+
+  .image {
+    label .line {
+      padding-left: 3em;
+      padding-right: 3em;
+    }
+  }
+
+  .isos {
+    margin-top: 1.6em;
+    margin-bottom: 2.6em;
+
+    label {
+      .padding {
+        padding-top: 0.5em;
+        height: 0.8em;
+      }
+
+      .wrap {
+        padding-left: 0.8em;
+        padding-right: 0.8em;
+
+        img {
+          max-height: 40px;
+        }
+      }
+    }
+  }
+
+  .appliances, .apps {
+    margin-top: 1em;
+  }
+
+  .create {
+    margin: 2em auto 5em auto;
+  }
+}

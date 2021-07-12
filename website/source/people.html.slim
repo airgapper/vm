@@ -1,0 +1,147 @@
+---
+title: Virtkick - People
+description: Our Team and Open Source history
+contributors:
+- name: Damian Nowak
+  position: CEO
+  email: nowaker@virtkick.com
+  nickname: Nowaker
+  github: https://github.com/Nowaker
+  text: 
+  - Virtkick's mastermind, Minecraft & bluegrass music fan.
+  - Likes cats and motorcycles.
+- name: Damian Kaczmarek
+  position: CTO
+  email: rush@virtkick.com
+  nickname: Rush
+  github: https://github.com/Rush
+  text: 
+  - Passionate sailor, Ironman and all-round coder. 
+  - Rush makes sure our computers beep.
+- name: Mirek Wozniak
+  position: CMO
+  email: mirek@virtkick.com
+  nickname: wozmir
+  github: https://github.com/wozmir
+  text: 
+  - Mirek connects the nerds with the non-nerds. 
+  - A musician wannabe, history buff and gamer.
+- name: Wojtek Jodel
+  position: Design
+  email: m13@virtkick.com
+  nickname: m13
+  github: https://github.com/malps13
+  text: 
+  - Globetrotter, bassist and court designer.
+  - We never know where he's currently at, to be honest.
+- name: Mateusz Kwiatkowski
+  position: DevOps
+  email: kwiat@virtkick.io
+  nickname: kwiat
+  text: 
+  - He's the only one to know how networks really work.
+  - Likes Saab cars and Scania trucks.
+- name: Rafał Lisewski
+  position: DevOps
+  email: rafalski@virtkick.com
+  nickname: rafalski
+  text:
+  - Knows (almost) everything about backups and security.
+  - He's got three kids... but Nowaker tries to catch up.
+- name: Joe Pettit
+  position: Developer
+  email: jpettit@virtkick.com
+  nickname: jpettit
+  github: https://github.com/silverp1
+  text:
+  - Plays games and hacks stuff.
+  - Likes Python, but we're converting him to Node.js.
+donors: 
+- column:
+  - Sebastian Burkhart
+  - Amar Cosic
+  - Daniel van Dorp
+  - Josh Edwards
+  - Dustin Falgout
+  - Steve Freeman
+  - Marcel Fuhrmann
+  - Jeremy Johnson
+  - Alexander Kokuev
+  - Jake Logemann
+  - Stian "lonix" Larsen
+- column:
+  - NicoNicoFreak
+  - Theodoros Ploumis
+  - Mark Price
+  - Dietmar Schinnerl
+  - Zaliyo Technologies
+  - tobru
+  - trou
+  - Valdearg
+  - David Wagner
+  - Aaron R. Williams
+  - Łukasz Żuchowski
+---
+#page-people
+  .gradient
+    = partial 'layouts/nav', locals: {logo: 'color'}
+
+    .container.narrow
+      .row
+        .col-md-12
+          h1 You win, we win.
+          p.bigger Virtkick makes cloud easy for your clients with the lightweight and user-friendly approach. Whether you're a small data center, a game hosting company or a huge enterprise, Virtkick is easy to plug-in and make the most of your hardware without extra costs. 
+          p.bigger We're a Techstars-backed company with strong background in networking and hosting management. Here's a bit more about us:
+
+    .contributors
+      - current_page.data.contributors.each do |contributor|
+        .contributor
+          .logo-container
+            .logo
+              = gravatar_for contributor.email, :size => 116
+          .name
+            h3
+              = contributor.name
+              | &nbsp;&nbsp;
+              - unless contributor.md5
+                = link_to '<i class="fa fa-envelope-o"></i>', "mailto:#{contributor.email}", class: 'email'
+                | &nbsp;
+              = link_to '<i class="fa fa-github"></i>', contributor.github if contributor.github
+            h4.title = contributor.position
+          .desc
+            - contributor.text.each do |text|
+              p = text
+  
+  .black-dark
+    .container.narrow.open-source
+      .row
+        .col-md-12
+          img.os-logo src='/img/open-source.png'
+          h1 We were open source. We are open source.
+          p.bigger 
+            | Virtkick started open source. And Virtkick's core will stay open source forever. You can take a look at the source code at GitHub: 
+            a href="https://github.com/virtkick/virtkick" https://github.com/virtkick/virtkick
+            | .
+
+          h1 Backers
+          p.bigger We're eternally grateful for the people who supported us back then. Here are the names of our Indiegogo backers that made this journey possible:
+          .container-fluid
+            .row
+              - current_page.data.donors.each do |column|
+                .col-md-6
+                  ul
+                    - column.column.each do |donor|
+                      li = donor
+          p.bigger
+            The Indiegogo backers will receive their perks as promised.
+      .row
+        .col-md-12
+          h1 Thanks List
+          a href='https://www.jetbrains.com/ruby/'
+            img src='/img/logo/rubymine.png' style='margin-right: 30px;'
+          a href='https://www.jetbrains.com/python/'
+            img src='/img/logo/pycharm.png'
+          p.bigger
+            > IDEs from
+            a href='https://www.jetbrains.com/' JetBrains
+            > rock! Thanks for providing us with free licenses.

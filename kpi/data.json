@@ -1,0 +1,18 @@
+{
+	"week": 3,
+	"newActivations": [0, 0, 13],
+	"websiteSessions": [1400, 1885, 1363],
+	"subscribers": [13, 13.45, 13.90],
+	"newMailchimpSubscribers": [30, 68, 40],
+	"lastRocks": [
+		"Billing framework",
+		"New pitch"
+	],
+	"newRocks": [
+		"First payment",
+		"Debian package"
+	],
+	"highlights": [
+		"Survey to users"
+	]
+}

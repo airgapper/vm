@@ -1,0 +1,24 @@
+paths:
+  requireLib: 'require'
+shim:
+  jquery:
+    exports: 'jQuery'
+  jquery_ujs: ['jquery']
+  bootstrap: ['jquery', 'jquery_ujs']
+  'twitter/bootstrap/rails/confirm':
+    deps: ['bootstrap', 'jquery_ujs']
+  'bootstrap/collapse': ['jquery']
+modules:
+  - name: 'application'
+    include: ['requireLib', 'application']
+    exclude: []
+  - name: 'setup'
+    include: ['requireLib', 'setup']
+  - name: 'signin'
+    include: ['requireLib', 'signin']
+  - name: 'signup'
+    include: ['requireLib', 'signup']
+preserveLicenseComments: false
+generateSourceMaps: true
+optimize: uglify2
+wrapShim: true

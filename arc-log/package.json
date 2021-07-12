@@ -1,0 +1,31 @@
+{
+  "name": "arc-log",
+  "version": "1.0.7",
+  "description": "A full featured logging solution for Node.js",
+  "main": "arc.js",
+  "scripts": {
+    "test": "node test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/silverp1/arc-log.git"
+  },
+  "keywords": [
+    "log",
+    "logging",
+    "logger"
+  ],
+  "author": "Joe Pettit",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/silverp1/arc-log/issues"
+  },
+  "homepage": "https://github.com/silverp1/arc-log#readme",
+  "dependencies": {
+    "bluebird": "^2.9.30",
+    "colors": "^1.1.2",
+    "fs": "0.0.2",
+    "moment": "^2.10.3",
+    "path": "^0.11.14"
+  }
+}

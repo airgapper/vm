@@ -1,0 +1,40 @@
+- @header = 'Add-ons'
+- @icon = 'beaker'
+
+#page-addons
+  h2 For VirtKick users
+
+  .addons.row
+    .dns.col-md-6
+      img src='https://zerigo.com/images/logos/login_logo.png'
+      p Manage DNS records for your VirtKick machines in a single interface.
+
+  h2 For VirtKick administrators
+
+  .addons.row
+    .status.col-md-6
+      img src='/img/addons/status-io.png'
+      p Get your off-site status page and inform your users and customers about the outage.
+    .mailing.col-md-6
+      img src='https://mailchimp.com/assets/images/freddie.1403114364.svg'
+      | &nbsp;
+      img src='https://mailchimp.com/assets/images/logo-dark.1403114364.svg'
+      p Keep in touch with your users by sending them newsletters and event-related e-mails.
+    .fraud.col-md-6
+      img src='https://siftscience.com/images/site/logo.png'
+      p Detect fraudulent credit card payments and prevent such orders from being finalized.
+    .monitoring.col-md-6
+      img src='https://0722ab5fcdecd21847ac-640220752bfc90c9496db9cee20b06fe.ssl.cf1.rackcdn.com/assets/site/logo-main-5e1e655850f6ed46a67ccef0fc4aef47.png'
+      p Monitor the health, availability and resource usage of your VirtKick hypervisors.
+
+  h3 Legal note
+  p All trademarks, product names and company names or logos cited herein are the property of their respective owners.
+
+
+- content_for :scripts do
+  javascript:
+    $(function() {
+      $('#page-addons .addons > div').click(function() {
+        document.location.href = '/addons-zerigo.html'
+      });
+    });

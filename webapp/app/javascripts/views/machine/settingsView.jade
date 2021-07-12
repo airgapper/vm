@@ -1,0 +1,44 @@
+#page-settings
+  div(ng-if="false")
+    h3 
+      .fa.fa-signal
+      | Network
+    
+    .dashboard-inverse.network-zone
+      form.iso-form
+        .info-row
+          label
+            | IP
+          .value-field
+            | 192.168.1.100
+        .info-row
+          label
+            | Gateway
+          .value-field
+            | 192.168.1.1
+        .info-row.mask
+          label
+            | Mask
+          .value-field
+            | 255.255.255.0
+          .value-field.mask-field
+            | /24
+
+  h3 
+    .fa.fa-wrench
+    | CD image
+
+  .dashboard-inverse
+    form.iso-form
+      label
+        | Mount ISO as CD-ROM &nbsp;
+      .iso-select
+        distroselect(machine='machine')
+  
+  h3 
+    .fa.fa-bomb
+    | Danger Zone
+
+  .dashboard-inverse.danger.danger-zone
+    span I don't need this machine anymore. 
+    a.btn.btn-danger(confirm='Are you sure? This cannot be undone.',title='Delete {{machine.hostname}}?',action="machine.deletePermanently()") Delete machine

@@ -1,0 +1,302 @@
+@import 'bootstrap-customize';
+@import '_mixins';
+
+#page-index {
+  h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+  }
+
+  .cosmic {
+    position: relative;
+    color: white;
+    background-color: $black-dark;
+    background-image: url('/img/cosmic-bg.png');
+
+    h1 {
+      margin-top: 0em;
+      margin-bottom: 0em;
+      color: white;
+      font-size: 3.1em !important;
+      font-weight: 300;
+    }
+
+    h2 {
+      margin-top: 0.57em;
+      margin-bottom: 0em;
+      color: white;
+      font-size: 2.1em !important;
+      font-weight: 100;
+    }
+
+    .header {
+      text-align: center;
+      padding-left: 1em;
+      padding-right: 1em;
+      padding-top: 1em;
+      padding-bottom: 4em;
+      @media (min-width: $grid-float-breakpoint) {
+        padding-top: 12em;
+        padding-bottom: 12em;
+      }
+
+      .cta {
+        margin-top: 2.5em;
+        .btn {
+          margin: 6px;
+        }
+      }
+    }
+  }
+
+  .screenshots-wrapper {
+    //padding-left: 50px;
+    background: $pink; /* Old browsers */
+    background: -moz-linear-gradient(top,  $black-dark 0%, $black-medium 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$black-dark), color-stop(100%,$black-medium)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  $black-dark 0%,$black-medium 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  $black-dark 0%,$black-medium 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  $black-dark 0%,$black-medium 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  $black-dark 0%,$black-medium 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$black-dark', endColorstr='$black-medium',GradientType=0 ); /* IE6-9 */
+
+    .screenshots {
+      position: relative;
+      background-color: $pink;
+      text-align: center;
+      width: 100%;
+      margin: 0;
+      z-index: 2;
+      padding-bottom: 4em;
+      @media (min-width: $grid-float-breakpoint) {
+        padding-bottom: 8em;
+      }
+      background: $pink; 
+      background: -moz-radial-gradient(center, ellipse cover,  $pink 0%, $pink-grad-dark 100%); 
+      background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,$pink), color-stop(100%,$pink-grad-dark)); 
+      background: -webkit-radial-gradient(center, ellipse cover,  $pink 0%,$pink-grad-dark 100%);
+      background: -o-radial-gradient(center, ellipse cover,  $pink 0%,$pink-grad-dark 100%); 
+      background: -ms-radial-gradient(center, ellipse cover,  $pink 0%,$pink-grad-dark 100%); 
+      background: radial-gradient(ellipse at center,  $pink 0%,$pink-grad-dark 100%); 
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$pink', endColorstr='$pink-grad-dark',GradientType=1 ); 
+
+      .perforation .circle {
+        background-color: #C43C53;
+      }
+
+      .wrapper {
+        display: inline-block;
+        margin: 0 auto;
+
+        h1 {
+          text-align: left;
+          margin-top: 1.8em;
+          @media (min-width: $grid-float-breakpoint) {
+            margin-top: 2.9em;
+          }
+          margin-bottom: 0em;
+          font-weight: 300;
+        }
+
+        h3 {
+          text-align: left;
+          margin-top: 1em;
+          margin-bottom: 0em;
+          font-size: 1.2em;
+          font-weight: 300;
+        }
+
+        .mac-window {
+          margin-top: 3em;
+          @media (min-width: $grid-float-breakpoint) {
+            margin-top: 5.25em;
+          }
+          width: 100%;
+          max-width: 1000px;
+
+          .content img {
+            max-width: 100%;
+          }
+        }
+
+        .cta {
+          margin-top: 2em;
+          @media (min-width: $grid-float-breakpoint) {
+            margin-top: 4.75em;
+          }
+          
+          .btn {
+            margin: 6px;
+
+            &:hover, &:active {
+              @include transition(all 0.2s);
+              background-color: white;
+              color: $pink !important; 
+            }
+          }
+
+          .trial {
+            display: inline-block;
+            vertical-align: bottom;
+            color: #FA96A7;
+            font-size: $font-size-small;
+            width: 10px;
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+  }
+
+  .features {
+    position: relative;
+    color: white;
+    background-color: $black-medium;
+    z-index: 1;
+    padding-bottom: 3em;
+    @media (min-width: $grid-float-breakpoint) {
+      padding-bottom: 9em;
+    }
+
+    .perforation .circle {
+      background-color: #1A1A1A;
+    }
+
+    h1 {
+      margin-top: 2em;
+      @media (min-width: $grid-float-breakpoint) {
+        margin-top: 2.8em;
+      }
+    }
+
+    .feature-circles {
+      margin-top: 3em;
+      @media (min-width: $grid-float-breakpoint) {
+        margin-top: 7em;
+      }
+
+      article {
+        text-align: center;
+
+        .logo-container {
+          position: relative;
+          margin-left: auto;
+          margin-right: auto;
+          margin-bottom: 1.8em;
+          padding: 1.8em;
+          @media (min-width: $grid-float-breakpoint) {
+            margin-bottom: 1.8em;
+            padding: 1.8em;
+          }
+          max-width: 100%;
+          max-height: 100%;
+          width: 320px;
+          height: 320px;
+          border-radius: 160px;
+          background-color: $black-dark;
+          box-sizing: border-box;
+
+          .logo {
+            width: 165px;
+            height: 210px;
+            max-width: 100%;
+            max-height: 100%;
+            position: absolute;
+
+            left: 78px;
+            top: 55px;
+          }
+        }
+
+        h4 {
+          margin-top: 2em;
+          @media (min-width: $screen-lg) {
+            margin-top: 5em;
+          }
+        }
+
+        p {
+          color: $cream-muted;
+          margin-left: auto;
+          margin-right: auto;
+          margin-top: 1em;
+          margin-bottom: 3em;
+          width: 100%;
+          @media (min-width: $grid-float-breakpoint) {
+            margin-top: 1.8em;
+          }
+          @media (min-width: $screen-lg) {
+            margin-bottom: 1em;
+          }
+        }
+      }
+    }
+  }
+
+  .newsletter-section {
+    color: white;
+    background-color: $black-dark;
+    background-image: url('/img/lines-bg.png');
+    background-position: 0px -140px;
+    background-repeat: no-repeat;
+    padding-top: 5em;
+    padding-bottom: 5em;
+    @media (min-width: $screen-lg) {
+      padding-top: 0em;
+      padding-bottom: 0em;
+      min-height: 601px;
+    }
+    
+    .perforation .circle {
+      background-color: darken($black-dark, 1%);
+    }
+
+    h2 {
+      margin-top: 0em;
+      @media (min-width: $screen-lg) {
+        margin-top: 6.2em;
+      }
+    }
+
+    .newsletter {
+      margin: 0 auto;
+      text-align: center;
+
+      .form-inline {
+        @media (max-width: $screen-sm) {
+          input {
+            margin-top: 1em;
+          }
+        }
+        margin-top: 0em;
+        @media (min-width: $grid-float-breakpoint) {
+          margin-top: 60px;
+        }
+
+        input.newsletter-email {
+          text-align: center;
+          @media(min-width: $screen-sm) {
+            min-width: 430px;
+          }
+          border-radius: 33px;
+          height: 66px;
+          line-height: 66px;
+
+          color: $black-medium;
+        }
+
+        input.btn {
+          border-radius: 33px !important;
+          padding: 20px 50px;
+          margin-left: 15px;
+        }
+      }
+    }
+
+    .stay-connected {
+      margin-top: 40px;
+      font-size: 0.95em;
+      text-align: center;
+      color: $cream;
+    }
+  }
+}

@@ -1,0 +1,155 @@
+#page-power
+  .row.stats
+    .col-sm-3
+      .key Memory:
+      .val.bigger 2 GB
+    .col-sm-3
+      .key Processors:
+      .val
+        | 2 CPU
+      .progress
+        .progress-bar.real role='progressbar' aria-valuenow='42' aria-valuemin='0' aria-valuemax='160' style='width: 42%'
+          span.sr-only 42%
+    .col-sm-3
+      .key Storage:
+      .val 160 GB
+      .progress
+        .progress-bar role='progressbar' aria-valuenow='23' aria-valuemin='0' aria-valuemax='160' style='width: 23%'
+          span.sr-only 23%
+    .col-sm-3
+      .key State:
+      .val.power-state.bigger
+        i.fa.fa-play
+        span Running
+
+  .controls
+    .btn-group
+      a.action.start.btn.btn-default.active type='button'
+        i.fa.fa-play
+        | &nbsp; Start
+      a.action.pause.only-on.btn.btn-default type='button'
+        i.fa.fa-pause
+        | &nbsp; Pause
+      a.action.resume.only-on.btn.btn-default.active type='button'
+        i.fa.fa-forward
+        | &nbsp; Resume
+      a.action.stop.only-on.btn.btn-default type='button'
+        i.fa.fa-stop
+        | &nbsp; Stop
+      .btn-group
+        button.only-on.btn.btn-default.dropdown-toggle type='button' data-toggle='dropdown'
+          i.fa.fa-caret-down
+        ul.dropdown-menu
+          li
+            a.stop.only-on.action href='#'
+              span.fa.fa-power-off
+              | &nbsp; Hard stop
+      a.action.restart.only-on.btn.btn-default type='button'
+        i.fa.fa-repeat
+        | &nbsp; Restart
+      .btn-group
+        button.only-on.btn.btn-default.dropdown-toggle type='button' data-toggle='dropdown'
+          i.fa.fa-caret-down
+        ul.dropdown-menu
+          li
+            a.restart.only-on.action href='#'
+              span.fa.fa-power-off
+              | &nbsp; Hard reset
+
+
+- content_for :scripts do
+  javascript:
+    $(function() {
+      $('#power .resume').hide();
+
+      $('#power a.action').click(function() {
+        var state = $('.header .btn-state .state-name, #power .power-state span');
+        var action = $(this).text().toLowerCase().trim();
+        var actions = {
+          start: ['Starting', 'Running'],
+          pause: ['Paused', null, 'resume'],
+          resume: ['Running', null, 'pause'],
+          stop: ['Stopping', 'Stopped'],
+          restart: ['Restarting', 'Running'],
+          'hard stop': ['Stopped'],
+          'hard reset': ['Starting', 'Running']
+        };
+
+        var changeState = function(newState) {
+          state.text(newState);
+
+          var stateClass = "fa-play";
+          switch (newState) {
+            case "Paused":
+              stateClass = "fa-pause";
+              break;
+            case "Restarting":
+              stateClass = "fa-repeat";
+              break;
+            case "Stopped":
+              stateClass = "fa-stop";
+              break;
+            case "Stopping":
+              stateClass = "fa-stop";
+              break;
+          }
+
+          state.parent().find(".fa, .oi").each(function () {
+            $(this).replaceWith($('<i class="fa ' + stateClass + ' state state-running"></i>'));
+          });
+        };
+
+        var newState = actions[action][0];
+        var newStateAfterDelay = actions[action][1];
+        var showNewButton = actions[action][2];
+
+        changeState(newState, showNewButton);
+        if (showNewButton) {
+          $(this).hide();
+          $('.' + showNewButton).show();
+        }
+
+        if (newStateAfterDelay) {
+          setTimeout(function () {
+            changeState(newStateAfterDelay);
+          }, 1.5 * 1000);
+        }
+      });
+
+      $('#power .resume').hide();
+
+      $('#power a.start').click(function() {
+        $('.only-on').removeClass('disabled');
+        $('.start').addClass('disabled');
+        $('.action').removeClass('active');
+        $('.start').addClass('active');
+        $('#power .resume').hide();
+        $('#power .pause').show();
+      });
+      $('#power a.stop').click(function() {
+        $('.only-on').addClass('disabled');
+        $('.start').removeClass('disabled');
+        $('.action').removeClass('active');
+        $('.stop').addClass('active');
+      });
+      $('#power a.pause').click(function() {
+        $('.action').removeClass('active');
+        $('.resume').addClass('active');
+      });
+      $('#power a.resume').click(function() {
+        $('.action').removeClass('active');
+        $('.start').addClass('active');
+      });
+      $('#power a.restart').click(function() {
+        $('.action').removeClass('active');
+        $('.restart').addClass('active');
+        setTimeout(function () {
+          $('.action').removeClass('active');
+          $('.start').addClass('active');
+        }, 1.5 * 1000);
+      });
+
+      $('.screenshot a').click(function() {
+        $('.console').click();
+      });
+    });

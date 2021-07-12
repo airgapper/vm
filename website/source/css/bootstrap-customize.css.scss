@@ -1,0 +1,126 @@
+$pink: #EC4863;
+$pink-light: #EF5272;
+$pink-grad-dark: #CF3F58;
+$black-dark: #1A1A1A;
+$black-medium: #1F1F1F;
+$black-light: #292929;
+$gray: #D2D2D2;
+$cream: #DCD9D0;
+$cream-muted: #BFBCB5;
+$red: #E96161;
+$yellow: #E9B261;
+$green: #82BB69;
+$blog-bg-odd: #EDEDED;
+$blog-bg-even: #F3F3F3;
+$blog-code-bg-odd: #E6E5E4;
+$blog-code-bg-even: #EAE9E8;
+$blog-code-text-odd: #87847F;
+$blog-code-text-even: #87847F;
+$blog-header: #F85A7D;
+$blog-written: #787671;
+$blog-text: #696762;
+$people-text: #918F89;
+$people-title: #B8B5AD;
+
+// Bootstrap overrides, lookup the names at http://getbootstrap.com/customize/
+$brand-primary: $pink;
+$body-bg: $black-medium;
+$grid-columns: 12;
+$grid-float-breakpoint: 1024px;
+$headings-color: white;
+$input-border-focus: white;
+$tooltip-bg: white;
+$tooltip-arrow-width: 8px;
+$input-border-radius: 20px;
+
+$text-color:            white !default;
+
+$font-family-sans-serif: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif !default;
+$font-family-serif:       Georgia, 'Times New Roman', Times, serif !default;
+$font-family-monospace:   Menlo, Monaco, Consolas, 'Courier New', monospace !default;
+$font-family-base:        $font-family-sans-serif !default;
+
+$font-size-base:          17px !default;
+$font-size-large:         ceil(($font-size-base * 1.25)) !default; // ~20px
+$font-size-small:         ceil(($font-size-base * 0.85)) !default; // ~14px
+
+$font-size-h1:            floor(($font-size-base * 2.4)) !default; // ~38px
+$font-size-h2:            floor(($font-size-base * 2.0)) !default; // ~32px
+$font-size-h3:            ceil(($font-size-base * 1.4)) !default; // ~22px
+$font-size-h4:            ceil(($font-size-base * 1.25)) !default; // ~20px
+$font-size-h5:            $font-size-base !default; // 16px
+$font-size-h6:            ceil(($font-size-base * 0.85)) !default; // ~14px
+
+$line-height-base:        1.58 !default;
+$line-height-computed:    floor(($font-size-base * $line-height-base)) !default; // ~20px
+
+$headings-font-weight:    300 !default;
+$headings-line-height:    1.1 !default;
+
+p {
+  font-weight: 300;
+}
+
+h1 {
+  font-size: 2.3em;
+  font-weight: 300;
+}
+
+h2 {
+  font-weight: 300;
+}
+
+h3 {
+  font-weight: 300;
+}
+
+h4 {
+  font-weight: 500 !important;
+}
+
+h5, h6 {
+  font-weight: 700 !important;
+}
+
+.btn-white {
+  color: white !important;
+  background-color: black;
+  border-color: white;
+}
+
+.form-control {
+  border: 0 !important;
+}
+
+#navbar-collapsable {
+  border-top: 0 !important;
+}
+
+.navbar-toggle {
+  border: 0 !important;
+  bakground-color: transparent !important;
+}
+
+.navbar-brand {
+  padding-top: 3px !important;
+}
+
+$navbar-default-border: transparent;
+$navbar-default-bg: transparent;
+$navbar-default-color: white;
+$navbar-default-link-color: $navbar-default-color;
+$navbar-default-link-active-bg: transparent;
+$navbar-default-link-active-color: transparent;
+$navbar-default-link-hover-bg: $navbar-default-bg;
+$navbar-default-link-hover-color: $navbar-default-color;
+$navbar-margin-bottom: 0;
+$navbar-default-border: 0 !important;
+$navbar-height: 102px;
+
+$nav-link-hover-bg: transparent;
+
+.navbar-nav {
+  margin-top: 0 !important;
+}
+
+@import "bootstrap";

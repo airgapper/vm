@@ -1,0 +1,200 @@
+@import 'bootstrap-customize';
+@import '_mixins';
+
+#page-blog {
+  .gradient {
+    @include black-gradient();
+
+    h1 {
+      margin-top: 30px;
+      font-size: 2.1em;
+      text-align: center;
+    }
+
+    h3 {
+      color: #C7C7C7;
+      font-size: 1.5em;
+      text-align: center;
+      font-weight: 100;
+    }
+
+    .paper {
+      margin-top: 80px;
+      padding-left: 0px;
+      padding-right: 0px;
+      background-color: $blog-bg-even;
+    }
+  }
+
+  .odd {
+    background-color: $blog-bg-odd;
+
+    .blog {
+      pre {
+        background-color: $blog-code-bg-odd;
+        color: $blog-code-text-odd;
+      }
+    }
+  }
+
+  .blog {
+    color: $blog-text;
+
+    .post-header {
+      padding-top: 40px;
+      padding-bottom: 40px;
+      text-align: justify;
+
+      h1.title {
+        text-align: center;
+        margin-bottom: 10px;
+        font-weight: 300;
+      }
+
+      p {
+        margin: 0 0 50px !important;
+
+        &.article-author {
+          margin-top: 0px;
+          font-size: 1.05em;
+          text-align: center;
+          color: $blog-written;
+          font-weight: 300;
+
+          .author-name {
+            color: $pink;
+          }
+        }
+
+        &.links {
+          margin-top: 50px;
+        }
+      }
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      color: $pink;
+      font-weight: 300;
+    }
+    
+    .all {
+      margin-bottom: 50px;
+    }
+
+    .btn {
+      border: 1px solid lighten($pink, 2%) !important;
+      padding: 15px 30px;
+      font-weight: 300;
+      font-size: 0.85em;
+      color: $pink;
+      @include transition(all, 0.2s);
+
+      &:hover, &:active {
+        background-color: lighten($pink, 2%);
+        color: white;
+      }
+    }
+
+    &.short {
+      margin-bottom: 10px;
+      padding-top: 50px;
+      padding-bottom: 40px; 
+      text-align: left;
+
+      .post-header {
+        padding-top: 25px;
+        padding-bottom: 0px;
+
+        h1 {
+          margin-top: 0px;
+        }
+      }
+
+      .read-more {
+        margin-top: 30px;
+        text-align: right;
+      }
+    }
+
+    &.archive {
+      h1 {
+        font-size: 2.2em;
+        margin-top: 90px;
+      }
+    }
+
+    h1 {
+      font-size: 1.78em;
+      text-align: center;
+      margin-top: 50px;
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 1.48em;
+      margin-top: 50px;
+      margin-bottom: 30px;
+    }
+
+    h3 {
+      text-align: center;
+      font-size: 1.2em;
+      margin-top: 30px;
+      margin-bottom: 20px;
+    }
+
+    pre {
+      color: $blog-code-text-odd;
+      background-color: $blog-code-bg-even;
+      border: 0px solid transparent;
+      border-radius: 35px;
+      margin: 25px 0px;
+
+      .highlight {
+        background-color: transparent;
+        font-size: 1em;
+        color: $blog-code-text-odd;
+      }
+    }
+
+    .back {
+      margin-top: 50px;
+      text-align: right;
+    }
+
+    .author {
+      margin-bottom: 20px;
+      color: $blog-text;
+      font-weight: 300;
+
+      img.avatar {
+        border-radius: 4px;
+        float: left;
+        width: 80px;
+        margin-right: 18px;
+      }
+
+      .info { 
+        font-size: 0.95em;
+        padding-top: 13px;
+        .name {
+         font-size: 1.2em;
+          color: $pink;
+          a {
+            padding-left: 7px;
+          }
+        }
+      }
+    }
+
+    #disqus_thread {
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
+  }
+}
+
+
+@import 'pygments-railscasts';
+@import 'pygments-github';

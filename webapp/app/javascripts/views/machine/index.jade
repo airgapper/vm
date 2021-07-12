@@ -1,0 +1,65 @@
+#page-index
+  .items
+    ul
+      li
+        p
+          i.oi.oi-monitor
+          | Machines
+        p.value-field(ng-if='!state.loading')
+          | {{machines.length}}
+        p.value-field(ng-if='state.loading')
+          | &nbsp;
+      li
+        p
+          i.oi.oi-puzzle-piece
+          | Memory
+        p.value-field(ng-if='!state.loading')
+          | {{machines | map: 'memory' | sum | bytes: 'mb'}}
+        p.value-field(ng-if='state.loading')
+          | &nbsp;
+      li
+        p
+          i.fa.fa-database
+          | Storage
+        p.value-field(ng-if='!state.loading')
+          | {{machines | map: 'disks' | flatten | map: 'size' | sum | bytes}}
+        p.value-field(ng-if='state.loading')
+          | &nbsp;
+      li
+        p
+          i.oi.oi-credit-card
+          | Monthly
+        p.value-field(ng-if='(machines | filter: {plan: {period: "monthly" } }).length')
+          | {{machines | filter: {plan: {period: "monthly" } } | map: 'plan.price' | sum | currency: 'usd' }}
+          //| free
+        p.value-field(ng-else)
+          | free
+
+  div(ng-if='machines.length')
+    table.table.table-striped
+      thead
+        tr
+          th.name Name
+          th.memory Memory
+          th.storage Storage
+      tbody
+        tr(ng-repeat="machine in machines | orderBy:'hostname'")
+          td(class="name state-{{machine.status}}")
+            i.power-state-icon(class='icon fa' ng-class='{"fa-play": machine.status == "running", "fa-stop": machine.status == "stopped", "fa-pause": machine.status == "suspended"}')
+            a(href="/machines/{{machine.id}}")
+              | {{machine.hostname}}
+          td.memory
+            | {{machine.memory | bytes: 'mb'}}
+          td.storage
+            | {{machine.disks | map: 'size' | sum | bytes}}
+  div(ng-if='!machines.length && !state.loading')
+    p You don't have a machine yet. Kick things off and <a href="/machines/new">create one!</a>
+  div(ng-if='state.loading && !state.error')
+    p
+      ajaxloader(size=16 style='margin-right: 5px')
+      | Wait a sec while we load all of your machines ...
+  p
+    div.alert.alert-danger(ng-if='state.error')
+      | {{state.error}}
+      a.btn.btn-default.btn-sm(ng-click='reload()') Retry
+

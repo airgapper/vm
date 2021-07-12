@@ -1,0 +1,23 @@
+@import 'bootstrap-customize';
+@import '_mixins';
+
+#page-legal {
+  .page-top {    
+    padding-bottom: 65px;
+
+    h1 {
+      margin-top: 40px;
+      margin-bottom: 0px;
+      text-align: center;
+    }
+  }
+
+  .attributions {
+    padding-top: 0px;
+
+    .highlight {
+      font-weight: 600;
+      color: white;
+    }
+  }
+}

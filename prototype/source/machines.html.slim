@@ -1,0 +1,30 @@
+- @header = 'Machines'
+- @icon = 'monitor'
+
+- content_for :action do
+  a.btn.btn-primary.btn-block href='/new-machine.html'
+    | Create a new machine
+
+#page-machines
+  table.table.table-striped
+    thead
+      tr
+        th.name Name
+        th.memory Memory
+        th.storage Storage
+    tbody
+      tr
+        td.name
+          a href='/machine.html' HTTP Server
+        td.memory 512 MB
+        td.storage 10 GB
+      tr
+        td.name
+          a href='/machine.html' Demo Instance
+        td.memory 2 GB
+        td.storage 40 GB
+      tr
+        td.name
+          a href='/machine.html' KVM Nested Virtualization
+        td.memory 48 GB
+        td.storage 480 GB

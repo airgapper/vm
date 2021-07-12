@@ -1,0 +1,66 @@
+- @header = 'Add-ons: Zerigo DNS'
+
+#page-addons-zerigo
+  p Manage DNS records for your VirtKick machines in a single interface.
+    Zerigo automatically sets the appropriate DNS records for your VirtKick machines
+    simplifying the management of DNS records for custom domains.
+
+  ul
+    li GeoDNS technology
+    li AnyCast network
+    li DDoS Mitigation
+
+  .row
+    .col-md-1
+    .col-md-4
+      ul.plans
+        li.default data-domains='1' data-templates='1' data-records='80' data-queries='1,000,000'
+          span.name Virtual DNS 1
+          span.price $7/mo
+        li data-domains='5' data-templates='5' data-records='125' data-queries='5,000,000'
+          span.name Virtual DNS 5
+          span.price $13/mo
+        li data-domains='10' data-templates='10' data-records='250' data-queries='15,000,000'
+          span.name Virtual DNS 10
+          span.price $19/mo
+        li data-domains='25' data-templates='25' data-records='500' data-queries='20,000,000'
+          span.name Virtual DNS 25
+          span.price $38/mo
+        li data-domains='50' data-templates='50' data-records='1,000' data-queries='100,000,000'
+          span.name Virtual DNS 50
+          span.price $63/mo
+        li data-domains='100' data-templates='100' data-records='2,000' data-queries='100,000,000'
+          span.name Virtual DNS 100
+          span.price $120/mo
+    .col-md-2
+    .col-md-4.text-center
+      dl
+        dt Domains
+        dd.domains
+        dt Templates
+        dd.templates
+        dt Host records
+        dd.records
+        dt Queries per month
+        dd.queries
+
+      input.signup.btn.btn-lg.btn-primary type='submit' value='Sign up now'
+
+
+- content_for :scripts do
+  javascript:
+    $(function() {
+      $('#page-addons-zerigo li').click(function() {
+        $('#page-addons-zerigo dl').show('slow');
+        var $that = $(this);
+
+        $('ul.plans li').removeClass('active');
+        $that.addClass('active');
+
+        ['domains', 'templates', 'records', 'queries'].forEach(function(element) {
+          $('dd.' + element).text($that.attr('data-' + element));
+        });
+      });
+
+      $('#page-addons-zerigo li.default').click();
+    });

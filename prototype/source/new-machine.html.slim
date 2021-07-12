@@ -1,0 +1,96 @@
+- @header = 'Create a New Machine'
+- @icon = 'monitor'
+
+#page-new-machine
+  form role='form'
+    .form-group.details
+      input.form-control#machine_name type='text' autofocus='' placeholder='Enter Machine Name'
+
+    .form-group.appliance.text-center
+      p Arch Linux appliance with nginx, MariaDB, PHP will be used.
+
+    .form-group
+      h2
+        i.oi.oi-cart
+        | Choose a plan
+      .form-group.text-center
+        .plans.btn-group data-toggle='buttons'
+          - for plan in [[1, 20, 1], [2, 40, 1], [4, 60, 2], [8, 80, 3], [16, 100, 4]]
+            label.btn.btn-info.plan
+              input type="radio"
+              span.title = "#{plan[0]} GB RAM"
+              br
+              span.val = "#{plan[1]} GB SSD"
+              br
+              span.val = "#{plan[2]} CPU"
+
+    .form-group.image
+      h2
+        i.oi.oi-aperture
+        | Pick an image
+      .form-group.text-center
+        .image-types.btn-group data-toggle='buttons'
+          - for type in [['Appliance', 'appliances'], ['Mount ISO', 'isos'], ['1-Click App', 'apps']]
+            label.btn.btn-info.image-type
+              input type="radio" class=type[1]
+              span.title = type[0]
+
+        .image-type-group.appliances.isos.btn-group data-toggle="buttons"
+          - for distro in ['Ubuntu', 'Debian', 'CentOS', 'Fedora', 'OpenSuse', 'CoreOS', 'Arch Linux', 'FreeBSD']
+            label.btn.btn-info.distro
+              - file = '/img/distros/' + distro.downcase.gsub(' ', '-') + '.png'
+              .wrap
+                img src=file
+              input type='radio'
+              span.name = distro
+
+        .image-type-group.apps.btn-group data-toggle="buttons"
+          p VirtKick will deliver a 1-click integration with Sandstorm.
+          p It allows you to install many webapps with a single click.
+
+        .image-type-group.containers.btn
+
+    .form-group.text-center
+      a.create.btn.btn-primary.btn-lg href='/machine.html'
+        | Create a Machine
+
+
+- content_for :scripts do
+    javascript:
+      $(function() {
+        var applianceChosen = window.location.hash == '#appliance';
+        if (!applianceChosen) {
+          $('.appliance').hide();
+        }
+
+        $('.plan').click(function() {
+          if (applianceChosen) {
+            $('.create').show();
+            $('.appliance').hide();
+          }
+        });
+
+        $('.image-type-group').hide();
+
+        $('.image-type').click(function() {
+          $('.image-type-group').hide();
+          var selected = $(this).find('input').attr('class');
+          $('.image-type-group.' + selected).show();
+        });
+
+        $('.create').hide();
+
+        $('.distro').click(function() {
+          $('.create').show();
+        });
+
+        $('.snapshots tbody tr').click(function() {
+          $(this).siblings().removeClass('selected');
+          $(this).addClass('selected');
+          $('.create').show();
+        });
+
+        if (window.location.hash == '#appliance') {
+          $('.form-group.image').hide();
+        }
+      });

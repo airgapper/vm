@@ -1,0 +1,72 @@
+- @header = 'Billing'
+- @icon = 'credit-card'
+
+#page-billing
+  .row
+    .col-sm-4.text-center
+      div.billing
+        span Automatic payments:
+        br
+        span.bigger credit card
+        br
+        p.button
+          a.btn.btn-primary href='#'
+            | change
+
+    .col-sm-4.text-center
+      div.billing.balance
+        span Current balance:
+        br
+        span.bigger -$32
+        p.button
+          a.btn.btn-primary href='#'
+            | pay now
+
+    .col-sm-4.text-center
+      div.billing
+        span Bill to:
+        br
+        span.bigger Awesome LLC
+        br
+        p.button
+          a.btn.btn-primary href='#'
+            | customize
+
+  .row
+    .col-md-6.col-md-push-3.invoices
+      h3 Invoices
+      table.table.table-striped
+        tbody
+          tr
+            td.date = "2014-07-01"
+            td.amount.text-right
+              | $20 &nbsp;&nbsp;&nbsp;
+              a href='/invoice.pdf'
+                i.payed.fa.fa-file-pdf-o
+            td.actions.text-center
+              a.btn.btn-primary pay
+          - for invoice in (1..6).to_a.reverse
+            tr
+              td = "2014-0#{invoice}-01"
+              td.text-right
+                | $20 &nbsp;&nbsp;&nbsp;
+                a href='/invoice.pdf'
+                  i.fa.fa-file-pdf-o
+              td.text-center
+                i.fa.fa-check
+          tr.show-all
+            td.text-center colspan='3'
+              a href='#' show all invoices
+              | &nbsp;
+              span.fa.fa-caret-down
+
+
+- content_for :scripts do
+  javascript:
+    $(function() {
+      $('#page-billing tr:not(.show-all)').slice(4).hide();
+      $('#page-billing .show-all a').click(function() {
+        $('#page-billing tr:not(.show-all)').show();
+        $('.show-all').hide();
+      });
+    });

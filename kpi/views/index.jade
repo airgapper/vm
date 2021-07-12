@@ -1,0 +1,39 @@
+extends layout
+
+block content
+  script(type='text/javascript')
+    |var kpiData = !{JSON.stringify(data)};
+  #main 
+    #top
+      img#logo(src='/images/logo.svg')
+      div#title
+        | KPI dashboard<br>
+        | TSCloud 2015: week 3
+      img#techstars(src='/images/techstars.png')
+    #big-rocks
+      h1 Big rocks (Week #{data.week-1})
+      ul
+        each rock in data.lastRocks
+          li #{rock}
+      h1 Big rocks (Week #{data.week})
+      ul
+        each rock in data.newRocks
+          li #{rock}
+      h1 Highlights
+      ul 
+        each highlight in data.highlights
+          li #{highlight}
+      img#mrbug(src='/images/mrbug.svg')
+    #kpis
+      #kpi-1.kpi-area
+        .chart-title New activations
+        .ct-chart.ct-chart-dark
+      #kpi-2.kpi-area
+        .chart-title Website sessions
+        .ct-chart.ct-chart-dark
+      #kpi-3.kpi-area 
+        .chart-title GH stars vs OpenStack
+        .ct-chart.ct-chart-dark
+      #kpi-4.kpi-area
+        .chart-title New MailChimp subscribers
+        .ct-chart.ct-chart-dark

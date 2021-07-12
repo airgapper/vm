@@ -1,0 +1,11 @@
+- content_for :css
+  = stylesheet_link_tag '/css/blog/blog.css'
+
+= wrap_layout :layout do
+  #page-blog
+    .gradient
+      = partial 'layouts/nav', locals: {logo: 'color'}
+      h1 Virtkick blog
+      h3 Cloud news and hosting stories
+      .container.paper
+        = yield

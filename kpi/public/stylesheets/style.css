@@ -1,0 +1,164 @@
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  padding: 0px;
+  margin: 0px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+#main {
+  height: 100%;
+  min-width: 100%;
+  background-color: #B8233D;
+  position: relative;
+}
+
+#top {
+  position: relative;
+  height: 120px;
+  background-color: #3B1E28;
+  color: white;
+  font-size: 43px;
+}
+
+svg {
+  overflow: visible !important;
+}
+
+#top img {
+  height: 70%;
+  padding: 20px;
+}
+
+.ct-label {
+  left: -200px;
+}
+
+#kpis {
+  position: absolute;
+  top: 120px;
+  bottom: 0;
+  left: 0;
+  right: 320px;
+}
+
+#big-rocks {
+  position: absolute;
+  color: black;
+  
+  background-color: #eeeeee;
+  top: 120px;
+  bottom: 0px;
+  right: 0px;
+  width: 290px;
+  padding: 10px;
+}
+
+h1 {
+  font-size: 30px;
+}
+ul {
+  font-size: 30px;
+}
+
+.kpi-area {
+  margin: 10px;
+  background-color: #EADBC4;
+  overflow: hidden;
+}
+
+.chart-title {
+  position: absolute;
+  top: 20px;
+  left: 80px;
+  font-weight: bold;
+  font-size: 200%;
+  width: 200px;
+}
+
+.ct-chart {
+  margin-right: 100px;
+  height: 100%;
+}
+
+#kpi-1 {
+  position: absolute;
+  left: 0;
+  right: 50%;
+  top: 0;
+  bottom: 50%;
+}
+
+#kpi-2 {
+  position: absolute;
+  left: 50%;
+  right: 0;
+  top: 0;
+  bottom: 50%;
+}
+
+#kpi-3 {
+  position: absolute;
+  left: 0;
+  right: 50%;
+  top: 50%;
+  bottom: 0; 
+}
+
+#kpi-4 {
+  position: absolute;
+  left: 50%;
+  right: 0;
+  top: 50%;
+  bottom: 0; 
+}
+
+.ct-chart {
+  padding-left: 10px;
+}
+
+#top #logo {
+  float: left;
+}
+
+#top #techstars {
+  float: right;
+}
+
+#top #title {
+  display: inline-block;
+  text-align: center;
+  width: 50%;
+  left: 30%;
+  position: absolute;
+  padding: 14px;
+}
+
+#top p {
+  
+
+}
+
+.ct-chart .ct-label {
+  color: #673655 !important;
+  font-weight: bold;
+}
+
+#mrbug {
+  position: absolute;
+  bottom: 20px;
+  width: 50%;
+  display: none;
+  left: 25%;
+}
+
+@media only screen and (min-height: 1000px) { 
+#mrbug {display: block;  }
+}

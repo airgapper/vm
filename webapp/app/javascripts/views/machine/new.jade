@@ -1,0 +1,67 @@
+#page-new-machine.header-padding
+  form.ng-cloak(name='form')
+    h4 Subscription plan
+    .plans
+      input(name='machine[plan_id]' ng-model='newMachine.planId' required='true' class='hide')
+      .radio-group
+        .radio-elem.text-center(ng-repeat='plan in plans')
+          label(ng-model='newMachine.planId' btn-radio="{{plan.id}}" ng-disabled='newMachine.creatingMachine')
+            .line.strong
+              | {{plan.params.memory | bytes: 'gb'}}
+              |  RAM
+            .line
+              | {{plan.params.storage | bytes }}
+              |  SSD
+            .line
+              | {{plan.params.cpu}}
+              |  CPU
+            .line(ng-if='plan.price')
+              | {{plan.price | currency: 'usd'}} / {{plan.period | payPeriod}}
+          .paid(ng-if='plan.paidTo' title='Paid until {{plan.paidTo | date}}')
+            img(src='/assets/paid.png' style='width: 100px;')
+
+    // image choosing disabled for now, will be shown later or in demo
+      h4 Machine image
+      .image
+        input(name='machine[image_type]' ng-model='newMachine.imageType' required='true' class='hide')
+        .radio-group
+          .radio-elem.text-center(ng-repeat="type in imageTypes")
+            label(ng-model='newMachine.imageType' btn-radio="type.id" ng-disabled='newMachine.creatingMachine')
+              .line
+                | {{type.name}}
+        .appliances.alert.alert-info.ng-cloak(ng-if='newMachine.imageType == "appliances"')
+          p We will deliver appliances with various Linux distributions. Coming soon!
+
+    .isos.ng-cloak(ng-if='newMachine.imageType == "isos"')
+      h4 Mounted OS
+      input(name='machine[iso_distro_id]' ng-model='newMachine.isoId' required='true' class='hide')
+      .radio-group
+        .radio-elem.text-center(ng-repeat='iso in isos')
+          label(ng-model='newMachine.isoId' btn-radio="iso.id" ng-disabled='newMachine.creatingMachine')
+            .wrap
+              img(ng-src='/assets/distros/{{iso.code}}.png' versioned)
+          .name
+            | {{iso.name}}
+
+
+      .apps.alert.alert-info.ng-cloak(ng-if='newMachine.imageType == "apps"')
+        p We will deliver a 1-click integration with Sandstorm. It allows you to install many webapps with a single click. Coming soon!
+
+    h4 Machine name
+    .row
+      .col-xs-7
+        .form-group.details(ng-class="{ 'has-error' : form['machine[hostname]'].$invalid && !userForm.name.$pristine }")
+          input.form-control(name='machine[hostname]' ng-model='newMachine.hostname' machine-name required placeholder="Machine hostname"  ng-disabled='newMachine.creatingMachine')
+          .ng-cloak.help-block
+            ng-messages(for="form['machine[hostname]'].$error" ng-if="form.$dirty")
+              //ng-message(when="required")
+              //  | This can't be blank.
+              ng-message(when="already exists")
+                | Machine with such hostname already exists.
+              ng-message(when="has already been taken")
+                | Hostname already taken.
+              ng-message(when="any")
+                | Hostname is invalid.
+    div.alert.alert-danger(ng-if='newMachine.error')
+      | {{newMachine.error}}
+    include createMachineButton.jade

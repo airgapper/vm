@@ -1,0 +1,34 @@
+.canvas-wrapper(ng-mouseenter='grab()', ng-mouseleave='ungrab()')
+  .overlay-network(ng-if='state.ips')
+    .span(ng-repeat='ip in state.ips')
+      | IP: {{ip.address}} Gateway: {{ip.gateway}} Netmask: {{ip.netmask}}
+  .overlay
+    .overlay-bg
+    .state
+      div(ng-if='state.requesting.start || state.requesting.forceRestart')
+        .btn.btn-primary.symbol(disabled=1)
+          preloader(started,size=70)
+        .description
+          p(ng-if='state.requesting.start')
+            | Machine is starting.
+          p(ng-if='state.requesting.forceRestart')
+            | Machine is restarting.
+      div(ng-else-if='state.status == "stopped"')
+        .btn.btn-primary.symbol(ng-click="state.start()",ng-disabled='state.requesting.start')
+          div(ng-if='!state.requesting.start')
+            .icon.fa.fa-play
+          div(ng-if='state.requesting.start')
+            preloader(started,size=70)
+        .description
+          p
+            | Machine is stopped.
+      div(ng-else-if='state.status == "suspended"')
+        .btn.btn-primary.symbol(ng-click="state.resume()")
+          div(ng-if='!state.requesting.resume')
+            .icon.fa.fa-play
+          div(ng-if='state.requesting.resume')
+            preloader(started,size=70)
+        .description
+          p
+            | Machine paused.
+  vnc(host='{{vncHost}}' port='{{vncPort}}' path='machines/{{state.id}}/vnc' is-connected='true' password='{{state.vncPassword}}' display="display" interface='interface')

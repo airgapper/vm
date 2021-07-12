@@ -1,0 +1,99 @@
+#page-machine #power {
+  .btn { 
+    padding: 10px 35px;
+    &.dropdown-toggle {
+      padding: 10px 15px;
+    }
+  }
+
+  .stats.dashboard-inverse {
+    margin: 0;
+
+    .key {
+      min-height: 40px;
+    }
+
+    .value-field {
+      &.power-state {
+        i.power-state-icon {
+          margin-right: 7px;
+        }
+      }
+    }
+  }
+
+  .alert {
+    margin-top: 20px;
+  }
+
+  .controls {
+    margin-top: 40px;
+    text-align: center;
+
+    .btn-group {
+      .icon {
+        margin-right: 8px;
+      }
+
+      a.btn {
+        width: 140px;
+        @include transition(color, 0.25s, ease-in, 0s);
+
+        &:hover {
+          @include transition(color, 0.25s, ease-in, 0s);
+        }
+      }
+      a.action.start {
+        &.active {
+          color: white;
+          background-color: $vk-action-run-color;
+          i {
+            color: white;
+          }
+        }
+      }
+      a.action.pause {
+        &.active {
+          color: white;
+          background-color: $vk-action-pause-color;
+          i {
+            color: white;
+          }
+        }
+      }
+      a.action.resume {
+        padding-left: 15px;
+        padding-right: 15px;
+        &.active {
+          color: white;
+          background-color: $vk-action-pause-color;
+          i {
+            color: white;
+          }
+        }
+      }
+      a.action.restart {
+        &.active {
+          color: white;
+          background-color: $vk-action-restart-color;
+          i {
+            color: white;
+          }
+        }
+      }
+      a.action.stop {
+        &.active {
+          color: white;
+          background-color: $vk-action-stop-color;
+          i {
+            color: white;
+          }
+        }
+      }
+      .dropdown-toggle {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+    }
+  }
+}

@@ -1,0 +1,63 @@
+#page-storage.text-center
+
+  .create.text-right
+    a.btn.btn-primary.create-button
+      | Create a new disk
+    div.new
+      div.name
+        | vdd
+      div.type
+        select.form-control
+          option SSD
+          option HDD
+      div.size
+        select.size.form-control
+          option 20
+          option 50
+          option 100
+          option 250
+        |  GB &nbsp;
+      a.btn.btn-primary.save-button Create
+
+  table.table.table-striped.text-left
+    thead
+      tr
+        th.name Disk name
+        th.actions
+        th.type Type
+        th.size Size
+    tbody
+      - for disk in [['vda', 'SSD', '20 GB'], ['vdb', 'SSD', '40 GB'], ['vdc', 'HDD', '100 GB']]
+        tr
+          td.name
+            = disk[0]
+          td.actions
+            div.buttons
+              a.btn
+                span.oi.oi-resize-both
+                span.action Resize
+              a.btn
+                span.oi.oi-aperture 
+                span.action Snapshot
+              a.btn
+                span.oi.oi-delete
+                span.action Delete
+          td.type = disk[1]
+          td.size = disk[2]
+
+- content_for :scripts do
+  javascript:
+    $(function() {
+      $('#page-storage .create-button').click(function() {
+        $('#page-storage .create-button').fadeOut(200, function () {
+          $('#page-storage .new').fadeIn(200);
+        });
+      });
+
+      $('#page-storage .save-button').click(function() {
+        $('#page-storage .new').fadeOut(200, function () {
+          $('#page-storage .create-button').fadeIn(200);
+        });
+      });
+      
+    });

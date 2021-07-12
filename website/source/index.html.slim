@@ -1,0 +1,74 @@
+---
+features:
+- header: Simplicity
+  image: simplicity
+  text: 'Create virtual machines in 5 clicks. <br />Start a VPS business in a few clicks more.'
+- header: Beauty
+  image: beauty
+  text: 'Virtkick looks and feels like a mobile app. <br />And works on tablets and phones as well.'
+- header: Flexibility
+  image: flexibility
+  text: 'All your customers need to run their business. <br />All you need to manage your cloud.'
+---
+#page-index
+  .page-top.cosmic
+    = partial 'layouts/nav', locals: {logo: 'white'}
+    .header
+      h1 Enter the Cloud
+      h2 Sell better VPS. Sell VPS better.
+      .cta
+        a.btn.huge.btn-primary.ga-demo href='https://demo.virtkick.com/' target='_blank' 
+          | Try the Demo
+
+  .screenshots-wrapper
+    .container-fluid.screenshots
+      .perforation.hidden
+        .circle
+        .circle
+        .circle
+      .row
+        .col-md-12
+          .wrapper
+            h1.center Virtkick is the last VM management panel you'll ever need.
+            h3.center Let your customers take care of their Cloud.
+            a.ga-demo href='https://demo.virtkick.com/' target='_blank'
+              .mac-window
+                .bar
+                  .circles
+                    .circle.red
+                    .circle.yellow
+                    .circle.green
+                .content
+                  img src='/img/screenshots/machines-desktop.png'
+            .cta
+              a.btn.huge.btn-white-border.ga-demo href='https://demo.virtkick.com/' target='_blank' Try it now
+              span.trial.hidden No need for credit card, trial is on the house!
+    .clear
+  
+  .container-fluid.wrap-80.features
+    .perforation.hidden
+      .circle
+      .circle
+      .circle
+    .row
+      .col-md-12
+        h1 
+          | Your customers will love Virtkick.
+    .row.feature-circles
+      - current_page.data.features.each do |feature|
+        article.col-lg-4
+          .logo-container
+            .logo class="#{feature.image}"
+              = tag :img, src: "/img/#{feature.image}.png"
+          h4 = feature.header
+          p = feature.text
+
+  .container-fluid.newsletter-section 
+    .perforation.hidden
+      .circle
+      .circle
+      .circle
+    .row
+      .col-md-12
+        h2 Subscribe for the monthly Virtkick newsletter
+        = partial 'layouts/newsletter'

@@ -1,0 +1,110 @@
+.dashboard {
+  background-color: $vk-dashboard-bg-color;
+  padding: 40px 30px;
+  color: $vk-dashboard-color;
+  font-size: $text-normal;
+  border-radius: $vk-dashboard-border-radius;
+
+  @media (max-width: $screen-sm-max) {
+    .col-md-6 {
+      margin-top: 40px;
+
+      &:first-child {
+        margin-top: 0px;
+      }
+    }
+  }
+
+  &.setup {
+    background-color: transparent;
+    color: $vk-dashboard-inverse-color;
+    border: 1px solid $vk-billing-setup-border-color;
+
+    .setup-icon {
+      opacity: 0.2;
+      text-align: center;
+
+      .fa, .oi {
+        font-size: 70px;
+      }
+    }
+  }
+
+  h5 {
+    font-size: $header-small;
+    margin-top: 0px;
+    margin-bottom: 30px;
+    font-weight: bold
+  }
+
+  .small-label {
+    font-size: $text-small;
+  }
+
+  .btn.btn-lg {
+    border: 0px solid transparent !important;
+    @include button-size(18px, 35px, $text-normal, $text-normal, $vk-button-border-radius);
+  }
+
+  .value-field {
+    color: $vk-dashboard-field-color;
+    vertical-align: top;
+    display: inline-block;
+    background-color: $vk-dashboard-field-bg-color;
+    padding: 10px; 
+    text-align: center;
+    font-weight: bold;
+    @include button-size(18px, 35px, $header-small, $text-normal, 4px);
+    border-radius: $vk-dashboard-field-border-radius;
+  }
+
+  a.link {
+    margin-left: 13px;
+    margin-right: 3px;
+    cursor: pointer;
+    text-decoration: none;
+
+    i {
+      font-size: $text-small;
+      margin-right: 3px;
+    }
+  }
+}
+
+.dashboard-inverse {
+  border: solid 1px $vk-dashboard-inverse-border-color;
+  color: $vk-dashboard-inverse-color;
+  padding: 30px 20px;
+  border-radius: $vk-dashboard-inverse-border-radius;
+
+  .key {
+    min-height: 40px;
+  }
+
+  .value-field {  
+    color: $vk-dashboard-inverse-field-color;
+    background-color: $vk-dashboard-inverse-field-bg-color;
+    border-radius: $vk-dashboard-inverse-field-border-radius;
+    padding: 8px 0px;
+    text-align: center;
+
+    &.bigger {
+      padding: 17px 0px;
+    }
+  }
+
+  .progress {
+    background-color: $vk-dashboard-inverse-field-bg-color;
+    margin-top: 8px;
+    height: 10px;
+    margin-bottom: 0;
+
+    .progress-bar {
+      background-color: $vk-dashboard-inverse-progress-bg-color;
+    }
+  }
+}
+
+.dashboard-inverse.danger {
+  border-color: $vk-dashboard-inverse-danger-border-color;
+}

@@ -1,0 +1,93 @@
+@import 'bootstrap-customize';
+
+@mixin newsletter($input-height, $text-height) {
+  form {
+    input {
+      font-size: $text-height;
+      text-align: center;
+      height: $input-height;
+      margin-left: 4px;
+      margin-right: 4px;
+    }
+
+    .btn {
+      height: $input-height;
+      padding: 10px (2.5 * $text-height);
+    }
+  }
+
+  width: 100%;
+  @media(min-width: $screen-sm) {
+    .newsletter-email {
+      width: 280px;
+    }
+  }
+
+  .result {
+    margin-top: 15px;
+    color: white;
+  }
+}
+
+@mixin placeholder-color($color) {
+  ::-webkit-input-placeholder {
+    color: $color;
+  }
+  :-moz-placeholder {
+    color: $color;
+    opacity: 1;
+  }
+  ::-moz-placeholder {
+    color: $color;
+    opacity: 1;
+  }
+  :-ms-input-placeholder {
+    color: $color;
+  }
+}
+
+@mixin animation($animation-name, $duration, $transition) {
+  -webkit-animation: $animation-name $duration $transition;
+  -moz-animation: $animation-name $duration $transition;
+  -ms-animation: $animation-name $duration $transition;
+  -o-animation: $animation-name $duration $transition;
+  animation: $animation-name $duration $transition;
+}
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-o-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@mixin black-gradient() {
+  background: #292929; /* Old browsers */
+  background: -moz-linear-gradient(-70deg,  #292929 0%, #1a1a1a 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#292929), color-stop(100%,#1a1a1a)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(-70deg,  #292929 0%,#1a1a1a 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(-70deg,  #292929 0%,#1a1a1a 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(-70deg,  #292929 0%,#1a1a1a 100%); /* IE10+ */
+  background: linear-gradient(160deg,  #292929 0%,#1a1a1a 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#292929', endColorstr='#1a1a1a',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+@include keyframes(fade-in) {
+    0% { opacity: 0; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@include keyframes(fade-out) {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 0; }
+}

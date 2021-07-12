@@ -1,0 +1,31 @@
+#page-machine #stats {
+  .row {
+    margin-bottom: 20px;
+    
+    .stat {
+      h3 {
+        text-align: left;
+        margin-top: 5px !important;
+      }
+      img {
+        background-color: white;
+        padding: 30px 10px;
+        margin-bottom: 10px;
+        max-width: 100%;
+      } 
+    }
+  }
+
+  @media(max-width: $screen-sm-max) {
+    .row {
+      margin-bottom: 0px !important; 
+   
+      .col-sm-6 {
+        h3 {
+          text-align: center;
+        }
+        margin-bottom: 20px;
+      }
+    }
+  }
+}

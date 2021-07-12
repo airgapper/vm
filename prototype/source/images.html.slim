@@ -1,0 +1,89 @@
+- @header = 'Images'
+- @icon = 'aperture'
+
+#page-images
+  p.text-center Don't start from scratch - use a virtual appliance and get a ready-to-use environment.
+
+  input.form-control.search placeholder='Search in 2873 images...'
+
+  .repos.text-center
+    label
+      input.select.select-appliances type='checkbox' checked='checked'
+      |  Virtual appliances
+    label
+      input.select.select-repositories type='checkbox' checked='checked'
+      |  Docker repositories
+
+
+  table.table.table-striped.sortable
+    thead
+      tr
+        - for head in ['Distro', 'Description', 'Author']
+          th class=head.downcase
+            = head
+            | &nbsp;
+            i.fa.fa-sort
+        th.upvotes data-defaultsort='desc'
+          | Votes&nbsp;
+          i.fa.fa-sort
+        th
+    tbody
+      - docker = '<img src="/img/distros/docker.png" />'
+      - for i in [ \
+          ['Arch Linux', 'nginx, MariaDB, PHP', 'Nowaker', 25, true],
+          ['Arch Linux', 'http-master, Ruby, RVM, Sinatra & Rails', 'Nowaker', 103, true],
+          ['Ubuntu Server 14.04', 'Ubuntu LAMP', 'UbuntuMan', 234, true],
+          ['Kubuntu 14.04', 'Ubuntu Desktop with QT development toolkit', 'QtMan', 62, true],
+          ['Ubuntu 13.10', 'OpenStack all configured', 'OpenStack Mate', 9, true],
+          ['Arch Linux', 'VirtKick deployment', 'Nowaker', 4, true],
+          ['openSuse', 'Development environment for embedded systems - Arduino, ARM and AVR', 'RushPL', 2, true],
+          [docker, 'ubuntu: Official Ubuntu base image', 'stackbrew', 490, false],
+          [docker, 'nodejs: The Official Build of Node.js', 'stackbrew', 124, false],
+          [docker, 'clue/phpvirtualbox', 'clue', 3, false],
+          [docker, 'ewindisch/dockenstack', 'clue', 5, false],
+        ]
+        tr.appliance
+          td.distro = i[0]
+          td.description = i[1]
+          td.author = i[2]
+          td.text-right = i[3]
+          td.text-right
+            a.btn.btn-primary.create href='/new-machine.html#appliance'
+              = i[4] ? 'Create a machine' : 'Create a container'
+
+- content_for :scripts do
+  javascript:
+    $(function() {
+      var criteria = {
+        appliances: true,
+        repositories: true
+      };
+
+      $('#page-images .search').keyup(function() {
+        $('input.select').prop('checked', true);
+        var filter = new RegExp($(this).val(), 'i');
+        $('#page-images tr.appliance').hide().filter(function () {
+          var text = $(this).find('.distro, .description, .author').text();
+          return filter.test(text);
+        }).show();
+      });
+
+      var refresh = function() {
+        $('#page-images tr.appliance').hide().filter(function() {
+          var img = $(this).find('img');
+          var isDocker = img.size() > 0;
+          console.log(this);
+          console.log(isDocker);
+          return (isDocker && criteria.repositories) || (!isDocker && criteria.appliances);
+        }).show();
+      };
+
+      $('.select-appliances').change(function() {
+        criteria.appliances = $(this).is(':checked');
+        refresh();
+      });
+      $('.select-repositories').change(function() {
+        criteria.repositories = $(this).is(':checked');
+        refresh();
+      });
+    });

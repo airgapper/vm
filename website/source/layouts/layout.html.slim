@@ -1,0 +1,178 @@
+doctype html
+html
+  head
+    meta charset='utf-8'
+    meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'
+    title
+      = current_page.data.title || 'Virtkick - Enter the Cloud. A Simple VPS Cloud Management Panel.'
+    meta name='description' content='#{current_page.data.description || 'Virtkick makes cloud easy for your clients with the lightweight and user-friendly approach. Whether you\'re a small data center, a game hosting company or a huge enterprise, Virtkick is easy to plug-in and make the most of your hardware without extra costs.'}'
+    meta name='viewport' content='width=device-width'
+    - if @noindex
+      meta name='robots' content='noindex'
+    = feed_tag :atom, "#{blog.options.prefix.to_s}feed.xml", title: 'Atom Feed'
+    link rel='shortcut icon' href='/favicon.ico'
+    link rel='stylesheet' href='/css/virtkick.css'
+    - if content_for? :css
+      = yield_content :css
+    - else
+      = stylesheet_link_tag "/css/#{current_page.path.sub('.html', '')}"
+    = javascript_include_tag '/js/snippets.js'
+  body
+    #page
+      = yield
+      footer
+        .container-fluid.wrap-90
+          .logo.hidden-xs.hidden-sm
+            a href="/"
+              img src="/img/logo/virtkick-logo-pixelart-32.png" class="pix"
+              img src="/img/virtkick-name-white.png" class="virt-name"
+          .footer-nav.hidden-xs.hidden-sm
+            .link-group 
+              a.main.pink href="/"
+                | Home
+            .link-group 
+              a.main.pink href="/features.html"
+                | Features
+            .link-group
+              a.main.pink href="/people.html"
+                | People
+            .link-group
+              a.main.pink href="/pricing.html"
+                | Pricing
+            .link-group
+              a.main.pink href="/blog/"
+                | Blog
+            .link-group
+              a.main.pink href="/contact.html"
+                | Contact
+            .link-group
+              a.main.pink href="https://demo.virtkick.com/" target="_blank"
+                | Demo
+          .clear
+          .social-features
+            .column.copyright.hidden
+              a href='https://www.virtkick.com/'  VirtKick
+              |  &copy; 2014 StratusHost Damian Nowak
+              br
+              span.trademarks
+                | Marks and names mentioned herein may be trademarks of their respective companies. 
+                = succeed '.' do
+                  a href='/legal.html' Read more
+            .column.monthly-newsletter
+              p.slabel Subscribe for our monthly newsletter
+              = partial 'layouts/newsletter'
+            .column.social-media
+              p.slabel Let's talk
+              .social  
+                a.pink href="https://github.com/virtkick/"
+                  span.fa.fa-github
+                a.pink href="https://twitter.com/virtkick"
+                  span.fa.fa-twitter
+                a.pink href="https://www.facebook.com/virtkick"
+                  span.fa.fa-facebook-square
+            .column.presskit
+              a href="https://press.virtkick.io"
+                span.fa.fa-file-image-o
+                span.text Presskit
+            .column.techstars
+              p.slabel A Techstars-backed<br/>company
+              a href='http://www.techstars.com/'
+                img src='/img/techstars.png'
+
+      script src='/js/virtkick.js'
+      javascript:
+        $(function() {
+          $('.newsletter form').ajaxChimp({
+            callback: function(response, element) {
+              resultElement = $('.newsletter .result');
+              wrapperElement = $('.newsletter .form-group');
+
+              resultElement.addClass('performed');
+
+              if (response.result == 'error') {
+                wrapperElement.removeClass('has-success').addClass('has-error');
+                resultElement.html(response.msg);
+              } else {
+                wrapperElement.removeClass('has-error').addClass('has-success');
+                resultElement.html(resultElement.data('success'));
+                ga('send', 'event', 'newsletter', 'subscribe');
+                // hide form
+                wrapperElement.fadeOut(500);
+              }
+            },
+            errorCallback: function($form) {
+              // Disconnect.me extension blocks any JSONP requests.
+              $form.unbind('submit').submit();
+            }
+          });
+          
+          $('.beta-form form').ajaxChimp({
+            callback: function(response, element) {
+              errorElement = $('.beta-form .error');
+              wrapperElement = $('.beta-form');
+
+              if (response.result == 'error') {
+                wrapperElement.removeClass('success').addClass('error');
+                errorElement.html(response.msg);
+              } else {
+                $('.request-button').unbind('click');
+                wrapperElement.removeClass('error').addClass('success');
+                ga('send', 'event', 'beta-request', 'subscribe');
+              }
+              $('.request-button').removeClass('disabled');
+            },
+            errorCallback: function($form) {
+              // Disconnect.me extension blocks any JSONP requests.
+              $form.unbind('submit').submit();
+            }
+          });
+          
+          $('.request-button').click(function (e) {
+            e.preventDefault();
+            $('.beta-form form').submit();
+            $(this).addClass('disabled');
+          });
+
+          $('.beta-form input.beta-email').keypress(function () {
+            $('.beta-form').removeClass('error');
+          });
+
+          // send info to GA with some timeout in case of problems
+          var trackLink = function (e, category, action) {
+            e.preventDefault();
+
+            // store desired url
+            var href = $(e.currentTarget).attr('href');
+
+            // set timeout if GA is not reachable
+            var t = setTimeout('window.location = "' + href + '"', 250);
+
+            ga('send', {
+              'hitType': 'event',
+              'eventCategory': category,
+              'eventAction': action,
+              'hitCallback': function () {
+                clearTimeout(t);
+                window.location = href;
+              }
+            });
+          } 
+
+          // track analytics goals
+          $('.ga-alpha').click(function (e) {
+            trackLink(e, 'jumbotron', 'alpha');
+          });
+
+          $('.ga-demo').click(function (e) {
+            trackLink(e, 'jumbotron', 'demo');
+          });
+        });
+      = yield_content :scripts
+
+    /[if lte IE 8]
+      #old-browser
+        javascript:
+          document.getElementById('page').style.display = 'none';
+        div
+          | You are using an outdated browser.<br/>
+            Please <a href="http://browsehappy.com/">upgrade your browser</a> to access this website.

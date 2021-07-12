@@ -1,0 +1,80 @@
+#page-scheduler.text-center
+  p.bright-violet Schedule machine lifecycle events like start, stop or restart with a cron-like syntax.
+
+  .create.text-right
+    a.btn.btn-primary.create-button
+      | Create a new event
+    div.new
+      div.action
+        select.fa.form-control
+          option &#xf04b; start
+          option &#xf04d; stop
+          option &#xf01e; restart
+          option &#xf04c; pause
+      div.cron
+        select.combobox
+          option
+          option every day at midnight
+          option every week on Sunday midnight
+          option on the 1st day of month
+          option on the last day of month
+      div.next
+        | 2014-07-03 13:37
+      div.then
+        | 2014-07-08 13:37
+      a.btn.btn-primary.save-button Save
+
+
+  table.table.table-striped.text-left
+    thead
+      tr
+        th.action Action
+        th.cron Cron rule
+        th.actions
+        th.next Next on
+        th.then Then on
+    tbody
+      - for schedule in [['play', 'start', '0 12 * * *', '2014-06-28 12:00', '2014-06-29 12:00'],
+          ['stop', 'stop', '30 12 * * *', '2014-06-28 12:30', '2014-06-29 12:30']]
+        tr
+          td.action
+            i class="fa fa-#{schedule[0]}" &nbsp;
+            = schedule[1]
+          td.cron = schedule[2]
+          td.actions
+            div.buttons
+              a.btn
+                span.fa.fa-edit
+                span.action Edit
+              a.btn
+                span.oi.oi-delete
+                span.action Delete
+          td.next = schedule[3]
+          td.then = schedule[4]
+
+- content_for :scripts do
+  javascript:
+    $(function() {
+      $('#page-scheduler .combobox').combobox();
+
+      $('#page-scheduler .create-button').click(function() {
+        $('#page-scheduler .create-button').fadeOut(200, function () {
+          $('#page-scheduler .new').fadeIn(200, function () {
+            $('#page-scheduler .combobox').focus();
+            $('#page-scheduler .combobox').change(function() {
+              $('#page-scheduler .new .next').text('2014-07-03 13:37');
+              $('#page-scheduler .new .then').text('2014-07-08 13:37');
+              $('#page-scheduler .new .next, #page-scheduler .new .then').addClass("visible");
+            })
+          });
+        });
+      });
+
+      $('#page-scheduler .save-button').click(function() {
+        $('#page-scheduler .new').fadeOut(200, function () {
+          $('#page-scheduler .create-button').fadeIn(200);
+          $('#page-scheduler .new .next, #page-scheduler .new .then').removeClass("visible");
+        });
+      });
+      
+    });

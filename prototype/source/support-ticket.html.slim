@@ -1,0 +1,82 @@
+- @header = 'Support'
+- @icon = 'flag'
+
+- content_for :action do
+  a.btn.btn-primary.btn-block href='/support-ticket.html'
+    | Request support
+
+#page-support-ticket
+  h2
+    | Subject: can't start a newly created VM
+    span reported 3 days ago
+
+  div.conversation
+    .customer
+      p Hi, I have recently created 3 VMs. I can't start one of them. Nothing happens after I click "Start" button.
+      p Please fix.
+      p Thanks, Steve.
+    .customer
+      p Forgot to say I'm talking about the Arch Linux VM.
+      p -Steve
+
+    .support
+      p Hi Steve. We are very sorry for the problem.
+      p We have investigated the problem and deployed a fix. You should be able to start your VM now.
+      p Steve, VirtKick Support
+
+      p.question
+        span Did it help?
+        a.resolve.btn.btn-success
+          | Yes, thanks, that's all &nbsp;
+          i.fa.fa-thumbs-up
+        | &nbsp;&nbsp;&nbsp;&nbsp;
+        a.reply.btn.btn-danger
+          | No, I still have the problem &nbsp;
+          i.fa.fa-thumbs-down
+
+    .customer.feedback.response
+      p.resp
+
+    .support.feedback.response
+      p
+        | Thanks for letting us know. We will get back to you soon! &nbsp;
+        a href='/support.html' Go back to support requests.
+
+    .customer.feedback.reply-form
+      p We are very sorry! Please provide your feedback:
+      textarea.form-control rows='5'
+      p.submit.text-center
+        a.submit.btn.btn-lg.btn-primary
+          | Request support
+
+    .customer.feedback.thanks
+      p
+        | Thanks for letting us know! We marked your issue as solved. &nbsp;
+        a href='/support.html' Go back to support requests.
+
+- content_for :scripts do
+  javascript:
+    $(function() {
+      $('#page-support-ticket .feedback').hide();
+
+      $('#page-support-ticket .reply').click(function() {
+        $('.feedback').hide();
+        $('.reply-form').show();
+        $('textarea').focus();
+      });
+
+      $('#page-support-ticket .resolve').click(function() {
+        $('.feedback').hide();
+        $('.thanks').show();
+      });
+
+      $('#page-support-ticket a.submit').click(function() {
+        var response = $('textarea').val();
+        $('.response p.resp').text(response);
+        $('.reply-form').hide();
+        $('.customer.response').show('slow');
+        setTimeout(function() {
+          $('.support.response').show('slow');
+        }, 1000)
+      });
+    });

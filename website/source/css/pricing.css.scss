@@ -1,0 +1,314 @@
+@import 'bootstrap-customize';
+@import '_mixins';
+
+#page-pricing {
+  h1 {
+    margin-top: 1em;
+    @media (min-width: $grid-float-breakpoint) {
+      margin-top: 95px;
+    }
+    font-size: 2.1em;
+    text-align: center;
+  }
+
+  h3 {
+    color: #C7C7C7;
+    font-size: 1.5em;
+    text-align: center;
+    font-weight: 100;
+  }
+
+  .gradient {
+    @include black-gradient();
+  }
+
+  .newsletter-section {
+    color: white;
+    background-color: $black-dark;
+    padding-top: 4em;
+    padding-bottom: 4em;
+    @media (min-width: $grid-float-breakpoint) {
+      padding-top: 150px;
+      padding-bottom: 150px;
+    }
+
+    h1 {
+      font-size: 1.8em;
+      margin-top: 0;
+    }
+
+    .newsletter {
+      margin: 0 auto;
+      text-align: center;
+
+      .form-inline {
+        @media (max-width: $screen-sm) {
+          input {
+            margin-top: 1em;
+          }
+        }
+        margin-top: 2em;
+        @media (min-width: $grid-float-breakpoint) {
+          margin-top: 60px;
+        }
+
+        input.newsletter-email {
+          text-align: center;
+          @media(min-width: $screen-sm) {
+            min-width: 430px;
+          }
+          border-radius: 33px;
+          height: 66px;
+          line-height: 66px;
+
+          color: $black-medium;
+        }
+
+        input.btn {
+          border-radius: 33px !important;
+          padding: 20px 50px;
+          margin-left: 15px;
+        }
+      }
+    }
+  }
+
+  .wizard {
+    padding-top: 4em;
+    padding-bottom: 0em;
+    @media (min-width: $grid-float-breakpoint) {
+      padding-top: 120px;
+      padding-bottom: 140px;
+    }
+
+    .step {
+      text-align: center;
+      @media (max-width: $grid-float-breakpoint) {
+        margin-bottom: 4em;
+      }
+
+      h4 {
+        font-size: 1.45em;
+        margin-bottom: 40px;
+        @media (max-width: $grid-float-breakpoint) {
+          margin-bottom: 1em;
+        }
+        font-weight: 400 !important;
+        span.number {
+          color: $people-text;
+          font-weight: 400;
+          padding-right: 0.5em;
+        }
+      }
+
+      p {
+        color: $people-text;
+      }
+
+      .icon-wrapper {
+        padding: 50px;
+        display: inline-block;
+        border: 1px solid $pink;
+        border-radius: 100px;
+        margin-bottom: 40px;
+        @media (max-width: $grid-float-breakpoint) {
+          margin-bottom: 1em;
+        }
+
+        .fa {
+          color: $pink;
+          font-size: 3em;
+          display: block;
+          margin: 0 auto;
+        }
+      }
+    }
+    
+    @media (min-width: 768px) {
+      .step {
+        padding-left: 50px;
+        padding-right: 50px;
+      }
+    }
+  }
+
+  .beta-wrapper {
+    .beta {
+      position: relative;
+      background-color: $pink;
+      text-align: center;
+      width: 100%;
+      margin: 0;
+      background: $pink; 
+      background: -moz-radial-gradient(center, ellipse cover,  $pink 0%, $pink-grad-dark 100%); 
+      background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,$pink), color-stop(100%,$pink-grad-dark)); 
+      background: -webkit-radial-gradient(center, ellipse cover,  $pink 0%,$pink-grad-dark 100%);
+      background: -o-radial-gradient(center, ellipse cover,  $pink 0%,$pink-grad-dark 100%); 
+      background: -ms-radial-gradient(center, ellipse cover,  $pink 0%,$pink-grad-dark 100%); 
+      background: radial-gradient(ellipse at center,  $pink 0%,$pink-grad-dark 100%); 
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$pink', endColorstr='$pink-grad-dark',GradientType=1 ); 
+
+      h1 {
+        margin-top: 3.3em;
+        font-size: 2.4em;
+      }
+
+      .beta-form {
+        display: inline-block;
+        position: relative;
+        margin: 0 auto;
+        margin-bottom: 8.2em;
+        @media(max-width: $screen-sm) {
+          min-width: 90%;
+        }
+
+        p.error {
+          opacity: 0;
+          margin-top: 0em;
+          margin-bottom: 1.5em;
+          text-align: center;
+          transition: opacity 0.25s ease 0.0s;
+        }
+
+        .form-inline {
+          position: relative;
+          margin-top: 0em;
+          text-align: left;
+
+          .form-group {
+            position: relative; 
+            @media(max-width: $screen-sm) {
+              text-align: center;
+            }
+
+            input.beta-email {
+              position: relative;
+              text-align: center;
+              border-radius: 33px;
+              height: 66px;
+              line-height: 66px;
+              color: #777;
+              min-width: 100%;
+              display: inline-block;
+              box-shadow: none !important;
+              @media(min-width: $screen-sm) {
+                min-width: 430px;
+              }
+              @media(max-width: $screen-sm) {
+                margin-bottom: 15px;
+              }
+              transition: all 0.5s ease 0s;
+            }
+
+            .request-button {
+              vertical-align: top;
+              position: relative;
+              z-index: 2;
+              border-radius: 33px !important;
+              padding: 20px 20px;
+              margin-left: 15px;
+              @media(max-width: $screen-sm) {
+                margin-left: 0px;
+              } 
+
+              background-color: #262626;
+              color: white;
+              transition: all 0.3s ease 0s;
+              width: 250px;
+
+              &:hover {
+                background-color: darken(#262626, 5%);
+              }
+
+              &:active, &.active {
+                background-color: darken(#262626, 10%);
+              }
+
+              .text {
+                display: block;
+              }
+
+              .icon {
+                display: none;
+              }
+            }
+
+            .thanks {
+              position: absolute;
+              text-align: left;
+              top: 110px;
+              left: 130px;
+              @media(max-width: $screen-sm) {
+                width: 100%;
+                left: 0px;
+              }
+              display: block;
+              opacity: 0;
+              transition: opacity 0.5s ease 0.12s;
+              transition: left 0.5s ease 0.12s;
+            }
+          }
+        }
+
+        &.success {
+          .form-inline {
+            .form-group {
+              input.beta-email {
+                opacity: 0;
+                margin-left: -100%;
+              }
+
+              .request-button {
+                width: 66px;
+                margin-left: -130px;
+                @media(max-width: $screen-sm) {
+                  display: none;
+                }
+
+                .text {
+                  display: none;
+                }
+
+                .icon {
+                  display: block;
+                }
+              }
+
+              .thanks {
+                position: absolute;
+                top: -10px;
+                left: -35px;
+                display: block;
+                opacity: 1;
+                width: 500px;
+                max-width: 100%;
+                @media(max-width: $screen-sm) {
+                  text-align: center;
+                  left: 0px;
+                  width: 100%;
+                }
+              }
+            }
+          }
+        }
+
+        &.error {
+          .form-inline {
+            .form-group {
+              input.beta-email {
+                background-color: #FFA6AB;
+                color: #EC4863 !important;
+              }
+
+              @include placeholder-color(lighten(#EC4863, 5%));
+            }
+          }
+
+          .error {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
